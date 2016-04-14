@@ -17,4 +17,4 @@ FOUNDATION_EXPORT const unsigned char KZDojoFinderWebServiceClientLibraryVersion
 // In this header, you should import all the public headers of your framework using statements like #import <KZDojoFinderWebServiceClientLibrary/PublicHeader.h>
 
 
-#import "KZWSDojoService.h"
+#import "DojoWebService.h"
