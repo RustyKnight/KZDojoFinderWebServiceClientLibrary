@@ -18,10 +18,11 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	NSError* error;
 	// Do any additional setup after loading the view, typically from a nib.
 	CLLocationCoordinate2D from = CLLocationCoordinate2DMake(-38.099965, 145.071030);
 	CLLocationCoordinate2D to = CLLocationCoordinate2DMake(-38.186699, 145.180854);
-	[DojoWebService dojosWithin:from to:to];
+	[DojoWebService dojosWithin:from to:to error:&error];
 }
 
 - (void)didReceiveMemoryWarning {

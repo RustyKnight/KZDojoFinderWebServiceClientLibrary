@@ -10,7 +10,7 @@
 #import "DojoWebServiceUtilites.h"
 
 @implementation DojoWebService
-+(NSArray<WSDojo*>*)dojosWithin:(CLLocationCoordinate2D)regionFrom to:(CLLocationCoordinate2D)regionTo {
++(NSArray<WSDojo*>*)dojosWithin:(CLLocationCoordinate2D)regionFrom to:(CLLocationCoordinate2D)regionTo error:(NSError* _Nullable *)error{
 	NSDictionary *mainDictionary = [DojoWebServiceUtilites webServiceProperties];
 	
 	NSString* serverAddress = [mainDictionary valueForKey:@"WebServerAddress"];
@@ -41,19 +41,15 @@
 	
 	NSMutableArray* dojos;
 	NSURL *url = urlComponents.URL;
-	NSLog(@"Send request %@", url);
-	NSData *data = [NSData dataWithContentsOfURL:url];
+	NSData *data = [NSData dataWithContentsOfURL:url options:NSDataReadingUncached error:error];
 	if (data) {
-		NSLog(@"Parse response");
-		NSError *error;
-		NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-		if (!error) {
+		NSError *parseError;
+		NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&parseError];
+		if (!parseError) {
 			NSString *status = [json objectForKey:@"status"];
 			NSNumber *count = [json objectForKey:@"count"];
-			NSLog(@"Server responded with %@, expecting %@ dojos", status, count);
 			if ([@"ok" isEqualToString:status]) {
 				NSArray *responses = [json objectForKey:@"dojos"];
-				NSLog(@"Returned with %lu dojos", (unsigned long)responses.count);
 				dojos = [[NSMutableArray alloc] init];
 				for (NSDictionary* obj in responses) {
 					
@@ -66,21 +62,19 @@
 					
 					WSDojo* dojo = [[WSDojo alloc] initWithKey:key name:name address:address region:region.intValue latitude:latitude.doubleValue longitude:longitude.doubleValue];
 					[dojos addObject:dojo];
-					
-					NSLog(@"%@", dojo);
-					
 				}
 			} else {
 				// Alert caller?
-				NSString *error = [json objectForKey:@"error"];
-				NSLog(@"Return with error of %@", error);
+				NSString *errorString = [json objectForKey:@"error"];
+				NSDictionary *userInfo = @{NSLocalizedDescriptionKey: errorString};
+				NSLog(@"Return with error of %@", errorString);
+				*error = [NSError errorWithDomain:DojoWebServiceErrorDomain code:DojoWebServiceWebServerError userInfo:userInfo];
 			}
 		} else {
-			NSLog(@"Parser Error %@", [error localizedDescription]);
-			NSLog(@"        with %@", [error userInfo]);
+			NSLog(@"Parser Error %@", [parseError localizedDescription]);
+			NSLog(@"        with %@", [parseError userInfo]);
+			*error = parseError;
 		}
-	} else {
-		// Help!? What happend here?
 	}
 	
 	return dojos;
