@@ -8,7 +8,8 @@
 
 @import MapKit;
 #import <Foundation/Foundation.h>
+#import "WSDojo.h"
 
 @interface DojoWebService : NSObject
-+(NSArray*)dojosWithin:(CLLocationCoordinate2D)regionFrom to:(CLLocationCoordinate2D)regionTo;
++(NSArray<WSDojo*>*)dojosWithin:(CLLocationCoordinate2D)regionFrom to:(CLLocationCoordinate2D)regionTo;
 @end

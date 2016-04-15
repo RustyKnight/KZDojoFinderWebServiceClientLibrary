@@ -10,7 +10,7 @@
 #import "DojoWebServiceUtilites.h"
 
 @implementation DojoWebService
-+(NSArray*)dojosWithin:(CLLocationCoordinate2D)regionFrom to:(CLLocationCoordinate2D)regionTo {
++(NSArray<WSDojo*>*)dojosWithin:(CLLocationCoordinate2D)regionFrom to:(CLLocationCoordinate2D)regionTo {
 	NSDictionary *mainDictionary = [DojoWebServiceUtilites webServiceProperties];
 	
 	NSString* serverAddress = [mainDictionary valueForKey:@"WebServerAddress"];
@@ -39,6 +39,7 @@
 															 andValue:[DojoWebService doubleToString:regionTo.longitude]]];
 	urlComponents.queryItems = queryItems;
 	
+	NSMutableArray* dojos;
 	NSURL *url = urlComponents.URL;
 	NSLog(@"Send request %@", url);
 	NSData *data = [NSData dataWithContentsOfURL:url];
@@ -53,6 +54,22 @@
 			if ([@"ok" isEqualToString:status]) {
 				NSArray *responses = [json objectForKey:@"dojos"];
 				NSLog(@"Returned with %lu dojos", (unsigned long)responses.count);
+				dojos = [[NSMutableArray alloc] init];
+				for (NSDictionary* obj in responses) {
+					
+					NSNumber* key = obj[@"key"];
+					NSString* name = obj[@"name"];
+					NSString* address = obj[@"address"];
+					NSNumber* region = obj[@"region"];
+					NSNumber* latitude = obj[@"latitude"];
+					NSNumber* longitude = obj[@"longitude"];
+					
+					WSDojo* dojo = [[WSDojo alloc] initWithKey:key name:name address:address region:region.intValue latitude:latitude.doubleValue longitude:longitude.doubleValue];
+					[dojos addObject:dojo];
+					
+					NSLog(@"%@", dojo);
+					
+				}
 			} else {
 				// Alert caller?
 				NSString *error = [json objectForKey:@"error"];
@@ -66,7 +83,7 @@
 		// Help!? What happend here?
 	}
 	
-	return nil;
+	return dojos;
 }
 
 +(NSURLQueryItem*)makeQueryItemForKey:(NSString*)key andValue:(NSString*)value {
