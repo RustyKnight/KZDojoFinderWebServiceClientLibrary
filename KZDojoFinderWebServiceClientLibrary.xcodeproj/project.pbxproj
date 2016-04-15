@@ -25,6 +25,10 @@
 		705DED231CC06DC9002D5081 /* WSDojo.m in Sources */ = {isa = PBXBuildFile; fileRef = 705DED211CC06DC9002D5081 /* WSDojo.m */; };
 		705DED241CC07085002D5081 /* KZDojoFinderLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705DED1E1CBF6D00002D5081 /* KZDojoFinderLibrary.framework */; };
 		705DED261CC07E58002D5081 /* KZDojoFinderLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 705DED1E1CBF6D00002D5081 /* KZDojoFinderLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		705DED2A1CC0BC35002D5081 /* SessionWebService.h in Headers */ = {isa = PBXBuildFile; fileRef = 705DED281CC0BC35002D5081 /* SessionWebService.h */; };
+		705DED2B1CC0BC35002D5081 /* SessionWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 705DED291CC0BC35002D5081 /* SessionWebService.m */; };
+		705DED2E1CC0BD33002D5081 /* WSSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 705DED2C1CC0BD32002D5081 /* WSSession.h */; };
+		705DED2F1CC0BD33002D5081 /* WSSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 705DED2D1CC0BD32002D5081 /* WSSession.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -63,6 +67,10 @@
 		705DED1E1CBF6D00002D5081 /* KZDojoFinderLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KZDojoFinderLibrary.framework; path = Carthage/Build/iOS/KZDojoFinderLibrary.framework; sourceTree = "<group>"; };
 		705DED201CC06DC9002D5081 /* WSDojo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSDojo.h; sourceTree = "<group>"; };
 		705DED211CC06DC9002D5081 /* WSDojo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSDojo.m; sourceTree = "<group>"; };
+		705DED281CC0BC35002D5081 /* SessionWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionWebService.h; sourceTree = "<group>"; };
+		705DED291CC0BC35002D5081 /* SessionWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionWebService.m; sourceTree = "<group>"; };
+		705DED2C1CC0BD32002D5081 /* WSSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSSession.h; sourceTree = "<group>"; };
+		705DED2D1CC0BD32002D5081 /* WSSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSSession.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +149,10 @@
 				705DED1B1CBF60C5002D5081 /* DojoWebServiceUtilites.m */,
 				705DED201CC06DC9002D5081 /* WSDojo.h */,
 				705DED211CC06DC9002D5081 /* WSDojo.m */,
+				705DED281CC0BC35002D5081 /* SessionWebService.h */,
+				705DED291CC0BC35002D5081 /* SessionWebService.m */,
+				705DED2C1CC0BD32002D5081 /* WSSession.h */,
+				705DED2D1CC0BD32002D5081 /* WSSession.m */,
 			);
 			path = KZDojoFinderWebServiceClientLibrary;
 			sourceTree = "<group>";
@@ -154,6 +166,8 @@
 			files = (
 				705DED221CC06DC9002D5081 /* WSDojo.h in Headers */,
 				7057C1D81CBDE6A3006F43D2 /* DojoWebService.h in Headers */,
+				705DED2A1CC0BC35002D5081 /* SessionWebService.h in Headers */,
+				705DED2E1CC0BD33002D5081 /* WSSession.h in Headers */,
 				7057C1CF1CBDE490006F43D2 /* KZDojoFinderWebServiceClientLibrary.h in Headers */,
 				705DED1C1CBF60C5002D5081 /* DojoWebServiceUtilites.h in Headers */,
 			);
@@ -271,7 +285,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				705DED231CC06DC9002D5081 /* WSDojo.m in Sources */,
+				705DED2B1CC0BC35002D5081 /* SessionWebService.m in Sources */,
 				7057C1D91CBDE6A3006F43D2 /* DojoWebService.m in Sources */,
+				705DED2F1CC0BD33002D5081 /* WSSession.m in Sources */,
 				705DED1D1CBF60C5002D5081 /* DojoWebServiceUtilites.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

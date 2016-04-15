@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 #import "WSDojo.h"
 
-NSString *DojoWebServiceErrorDomain = @"org.kiazen.dojofinder.webservice.ErrorDomain";
+NSString *DojoWebServiceErrorDomain = @"org.kiazen.dojofinder.webservice.dojo";
 
 enum {
 	DojoWebServiceWebServerError
