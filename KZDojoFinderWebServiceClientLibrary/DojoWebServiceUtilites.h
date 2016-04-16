@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "WSDojo.h"
 
 @interface DojoWebServiceUtilites : NSObject
 +(NSDictionary*)webServiceProperties;
++(WSDojo*)makeDojoWithKey:(NSNumber*)key name:(NSString*)name address:(NSString*)address region:(int)region latitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude;
++(WSDojo*)makeDojoFromRespons:(NSDictionary*)response;
 @end

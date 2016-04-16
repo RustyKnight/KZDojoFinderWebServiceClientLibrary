@@ -7,6 +7,7 @@
 //
 
 #import "DojoWebServiceUtilites.h"
+#import "WSDojo.h"
 
 @implementation DojoWebServiceUtilites
 
@@ -36,5 +37,22 @@
 	NSString *file = [bundle pathForResource:@"DojoFinderWebService" ofType:@"plist"];
 	return [NSDictionary dictionaryWithContentsOfFile:file];
 }
+
+
++(WSDojo*)makeDojoWithKey:(NSNumber*)key name:(NSString*)name address:(NSString*)address region:(int)region latitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude {
+	WSDojo* dojo = [[WSDojo alloc] initWithKey:key name:name address:address region:region latitude:latitude longitude:longitude];
+	return dojo;
+}
+
++(WSDojo*)makeDojoFromRespons:(NSDictionary*)response {
+	NSNumber* key = response[@"key"];
+	NSString* name = response[@"name"];
+	NSString* address = response[@"address"];
+	NSNumber* region = response[@"region"];
+	NSNumber* latitude = response[@"latitude"];
+	NSNumber* longitude = response[@"longitude"];
+	return [DojoWebServiceUtilites makeDojoWithKey:key name:name address:address region:region.intValue latitude:latitude.doubleValue longitude:longitude.doubleValue];
+}
+
 
 @end

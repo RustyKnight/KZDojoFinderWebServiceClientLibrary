@@ -52,16 +52,7 @@
 				NSArray *responses = [json objectForKey:@"dojos"];
 				dojos = [[NSMutableArray alloc] init];
 				for (NSDictionary* obj in responses) {
-					
-					NSNumber* key = obj[@"key"];
-					NSString* name = obj[@"name"];
-					NSString* address = obj[@"address"];
-					NSNumber* region = obj[@"region"];
-					NSNumber* latitude = obj[@"latitude"];
-					NSNumber* longitude = obj[@"longitude"];
-					
-					WSDojo* dojo = [[WSDojo alloc] initWithKey:key name:name address:address region:region.intValue latitude:latitude.doubleValue longitude:longitude.doubleValue];
-					[dojos addObject:dojo];
+					[dojos addObject:[DojoWebServiceUtilites makeDojoFromRespons:obj]];
 				}
 			} else {
 				// Alert caller?
