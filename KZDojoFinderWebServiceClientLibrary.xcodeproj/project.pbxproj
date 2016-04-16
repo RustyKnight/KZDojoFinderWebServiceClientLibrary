@@ -25,10 +25,12 @@
 		705DED231CC06DC9002D5081 /* WSDojo.m in Sources */ = {isa = PBXBuildFile; fileRef = 705DED211CC06DC9002D5081 /* WSDojo.m */; };
 		705DED241CC07085002D5081 /* KZDojoFinderLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705DED1E1CBF6D00002D5081 /* KZDojoFinderLibrary.framework */; };
 		705DED261CC07E58002D5081 /* KZDojoFinderLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 705DED1E1CBF6D00002D5081 /* KZDojoFinderLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		705DED2A1CC0BC35002D5081 /* SessionWebService.h in Headers */ = {isa = PBXBuildFile; fileRef = 705DED281CC0BC35002D5081 /* SessionWebService.h */; };
+		705DED2A1CC0BC35002D5081 /* SessionWebService.h in Headers */ = {isa = PBXBuildFile; fileRef = 705DED281CC0BC35002D5081 /* SessionWebService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		705DED2B1CC0BC35002D5081 /* SessionWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 705DED291CC0BC35002D5081 /* SessionWebService.m */; };
-		705DED2E1CC0BD33002D5081 /* WSSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 705DED2C1CC0BD32002D5081 /* WSSession.h */; };
+		705DED2E1CC0BD33002D5081 /* WSSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 705DED2C1CC0BD32002D5081 /* WSSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		705DED2F1CC0BD33002D5081 /* WSSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 705DED2D1CC0BD32002D5081 /* WSSession.m */; };
+		70AAFD9A1CC1FC080013555B /* KZCoreLibrariesObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70AAFD991CC1FC080013555B /* KZCoreLibrariesObjC.framework */; };
+		70AAFD9B1CC1FC080013555B /* KZCoreLibrariesObjC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70AAFD991CC1FC080013555B /* KZCoreLibrariesObjC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,6 +40,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				70AAFD9B1CC1FC080013555B /* KZCoreLibrariesObjC.framework in Embed Frameworks */,
 				705DED261CC07E58002D5081 /* KZDojoFinderLibrary.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -71,6 +74,7 @@
 		705DED291CC0BC35002D5081 /* SessionWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionWebService.m; sourceTree = "<group>"; };
 		705DED2C1CC0BD32002D5081 /* WSSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSSession.h; sourceTree = "<group>"; };
 		705DED2D1CC0BD32002D5081 /* WSSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSSession.m; sourceTree = "<group>"; };
+		70AAFD991CC1FC080013555B /* KZCoreLibrariesObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KZCoreLibrariesObjC.framework; path = Carthage/Build/iOS/KZCoreLibrariesObjC.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,7 @@
 			files = (
 				703CF5E71CBF05BE0068E9EF /* KZDojoFinderWebServiceClientLibrary.framework in Frameworks */,
 				705DED241CC07085002D5081 /* KZDojoFinderLibrary.framework in Frameworks */,
+				70AAFD9A1CC1FC080013555B /* KZCoreLibrariesObjC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +126,7 @@
 		7057C1C11CBDE48F006F43D2 = {
 			isa = PBXGroup;
 			children = (
+				70AAFD991CC1FC080013555B /* KZCoreLibrariesObjC.framework */,
 				705DED1E1CBF6D00002D5081 /* KZDojoFinderLibrary.framework */,
 				7057C1CD1CBDE490006F43D2 /* KZDojoFinderWebServiceClientLibrary */,
 				703CF5D11CBF05AF0068E9EF /* TestWebService */,

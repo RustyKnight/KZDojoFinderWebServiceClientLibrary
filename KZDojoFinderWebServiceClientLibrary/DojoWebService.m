@@ -52,7 +52,7 @@
 				NSArray *responses = [json objectForKey:@"dojos"];
 				dojos = [[NSMutableArray alloc] init];
 				for (NSDictionary* obj in responses) {
-					[dojos addObject:[DojoWebServiceUtilites makeDojoFromRespons:obj]];
+					[dojos addObject:[DojoWebServiceUtilites makeDojoFromResponse:obj]];
 				}
 			} else {
 				// Alert caller?

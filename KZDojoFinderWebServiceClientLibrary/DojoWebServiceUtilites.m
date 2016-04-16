@@ -44,7 +44,7 @@
 	return dojo;
 }
 
-+(WSDojo*)makeDojoFromRespons:(NSDictionary*)response {
++(WSDojo*)makeDojoFromResponse:(NSDictionary*)response {
 	NSNumber* key = response[@"key"];
 	NSString* name = response[@"name"];
 	NSString* address = response[@"address"];

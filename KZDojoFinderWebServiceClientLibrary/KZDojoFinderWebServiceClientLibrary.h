@@ -18,3 +18,6 @@ FOUNDATION_EXPORT const unsigned char KZDojoFinderWebServiceClientLibraryVersion
 
 
 #import "DojoWebService.h"
+#import "SessionWebService.h"
+#import "WSDojo.h"
+#import "WSSession.h"

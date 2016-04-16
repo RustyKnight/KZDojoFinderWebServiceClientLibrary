@@ -9,41 +9,40 @@
 #import "SessionWebService.h"
 #import "DojoWebServiceUtilites.h"
 
-typedef void (^WebServiceVisitor)(NSString*, NSObject*);
+typedef void (^WebServiceParser)(NSDictionary*);
 typedef NSError* (^WebServiceErrorFactory)(NSDictionary*);
 
 @implementation SessionWebService
 +(NSArray<WSSession*>*)sessionsForDojo:(WSDojo *)dojo error:(NSError* _Nullable *)error {
-	return [SessionWebService sessionsForDojo:dojo.key error:error];
+	return [SessionWebService sessionsForDojoKey:dojo.key error:error];
 }
 
 +(NSArray<WSSession*>*)sessionsForDojoKey:(NSNumber*)dojoKey error:(NSError* _Nullable *)error {
 	
-	NSString* cmdKey = @"sessionsForDojo";
-	NSString* responseKey = @"sessions";
+	NSString* cmdKey = @"SessionsForDojo";
 	NSMutableDictionary<NSString*, NSObject*> *parameters = [[NSMutableDictionary alloc] init];
-	[parameters setObject:dojoKey forKey:@"dojoKey"];
+	[parameters setObject:dojoKey forKey:@"dojo"];
 
 	NSMutableArray<WSSession*>* sessions = [[NSMutableArray alloc] init];
 	[SessionWebService executeWebServiceForCommandKey:cmdKey
-																		withResponseKey:responseKey
 																		 withParameters:parameters
-																			objectFactory:^(NSString* key, NSObject* value) {
+																			withParser:^(NSDictionary* json) {
 																				
-																				if ([@"sessions" isEqualToString:key]) {
-																					NSArray* values = value;
-																					for (NSDictionary* response in values) {
-																						NSNumber* key = response[@"key"];
-																						NSNumber* dojokey = response[@"dojokey"];
-																						NSNumber* dayofweek = response[@"dayofweek"];
-																						NSString* details = response[@"details"];
-																						NSNumber* endtime = response[@"endtime"];
-																						NSNumber* starttime = response[@"starttime"];
-																						NSNumber* type = response[@"type"];
-																					}
-																				} else if ([@"dojo" isEqualToString:key]) {
-																					NSDictionary* response = value;
-																					[DojoWebServiceUtilites makeDojoFromRespons:response];
+																				NSNumber* count = json[@"count"];
+																				NSLog(@"Expcted %@ sessions", count);
+																				WSDojo* dojo = [DojoWebServiceUtilites makeDojoFromResponse:[json objectForKey:@"dojo"]];
+																				NSArray* sessionResponses = json[@"sessions"];
+																				for (NSDictionary* response in sessionResponses) {
+																					NSNumber* key = response[@"key"];
+																					NSNumber* dojokey = response[@"dojokey"];
+																					NSNumber* dayofweek = response[@"dayofweek"];
+																					NSString* details = response[@"details"];
+																					NSNumber* endtime = response[@"endtime"];
+																					NSNumber* starttime = response[@"starttime"];
+																					NSNumber* type = response[@"type"];
+																					
+																					WSSession* session = [[WSSession alloc] initWithKey:key dojo:dojo dayOfWeek:dayofweek details:details startTime:starttime endTime:endtime type:type];
+																					[sessions addObject:session];
 																				}
 																			}
 																			 errorFactory:^NSError *(NSDictionary *userInfo) {
@@ -63,9 +62,8 @@ typedef NSError* (^WebServiceErrorFactory)(NSDictionary*);
 }
 
 +(void)executeWebServiceForCommandKey:(NSString *)cmdKey
-											withResponseKey:(NSString*)responseKey
 											 withParameters:(NSDictionary<NSString*, NSObject*>*)parameters
-												objectFactory:(WebServiceVisitor)visitor
+												withParser:(WebServiceParser)parser
 												 errorFactory:(WebServiceErrorFactory)errorFactory
 																error:(NSError* _Nullable*)error {
 	
@@ -93,29 +91,20 @@ typedef NSError* (^WebServiceErrorFactory)(NSDictionary*);
 	
 	NSMutableArray* results;
 	NSURL *url = urlComponents.URL;
+	NSLog(@"%@", url);
 	NSData *data = [NSData dataWithContentsOfURL:url options:NSDataReadingUncached error:error];
 	if (data) {
 		NSError *parseError;
 		NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&parseError];
 		if (!parseError) {
 			NSString *status = [json objectForKey:@"status"];
-//			NSNumber *count = [json objectForKey:@"count"];
 			if ([@"ok" isEqualToString:status]) {
-				for (NSString* key in json) {
-					visitor(key, json[key]);
-				}
-//				NSArray *responses = [json objectForKey:responseKey];
-//				results = [[NSMutableArray alloc] init];
-//				for (NSDictionary* obj in responses) {
-//					objectFactory(obj);
-//				}
+				parser(json);
 			} else {
-				// Alert caller?
 				NSString *errorString = [json objectForKey:@"error"];
 				NSDictionary *userInfo = @{NSLocalizedDescriptionKey: errorString};
 				NSLog(@"Return with error of %@", errorString);
 				*error = errorFactory(userInfo);
-//				[NSError errorWithDomain:DojoWebServiceErrorDomain code:DojoWebServiceWebServerError userInfo:userInfo];
 			}
 		} else {
 			NSLog(@"Parser Error %@", [parseError localizedDescription]);

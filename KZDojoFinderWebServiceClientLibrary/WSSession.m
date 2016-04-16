@@ -7,6 +7,7 @@
 //
 
 #import "WSSession.h"
+#import <KZCoreLibrariesObjC/KZCoreLibrariesObjC.h>
 
 @implementation WSSession {
 	NSNumber* _key;
@@ -74,7 +75,7 @@
 }
 
 -(id<Dojo>)dojo {
-	return dojo;
+	return _dojo;
 }
 
 -(NSString *)details {
