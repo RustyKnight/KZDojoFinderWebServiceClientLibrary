@@ -19,7 +19,7 @@
 	
 	NSString* cmdKey = @"PictureForRegionContact";
 	NSMutableDictionary<NSString*, NSObject*> *parameters = [[NSMutableDictionary alloc] init];
-	[parameters setObject:key forKey:@"region"];
+	[parameters setObject:key forKey:@"key"];
 	
 	__block UIImage* imagePicture = nil;
 	[DojoFinderWebServiceUtilites executeWebServiceForCommandKey:cmdKey
@@ -40,7 +40,7 @@
 																											}
 																										}
 																									errorFactory:^NSError *(NSDictionary *userInfo) {
-																										return [NSError errorWithDomain:SessionServiceErrorDomain code:RegionContactWebServiceError userInfo:userInfo];
+																										return [NSError errorWithDomain:RegionContactWebServiceErrorDomain code:RegionContactWebServiceError userInfo:userInfo];
 																									}
 																												 error:error];
 	

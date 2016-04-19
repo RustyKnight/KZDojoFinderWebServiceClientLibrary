@@ -10,6 +10,7 @@
 //#import <KZDojoFinderWebServiceClientLibrary/KZDojoFinderWebServiceClientLibrary.h>
 #import "DojoWebService.h"
 #import "SessionWebService.h"
+#import "RegionContactWebService.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -39,7 +40,8 @@
 //		NSLog(@" error => %@ ", [error localizedDescription] );
 //	}
 	
-	UIImage* image = [DojoWebService pictureForDojoByKey:[NSNumber numberWithInt:383] error:&error];
+//	UIImage* image = [DojoWebService pictureForDojoByKey:[NSNumber numberWithInt:383] error:&error];
+	UIImage* image = [RegionContactWebService pictureForRegionContactByKey:[NSNumber numberWithInt:1] error:&error];
 	if (!error) {
 		if (image) {
 			NSLog(@"Image was loaded");
