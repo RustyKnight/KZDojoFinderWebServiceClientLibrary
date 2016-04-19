@@ -9,7 +9,7 @@
 @import UIKit;
 #import "WSRegionContact.h"
 
-static const NSString *RegionContactWebServiceErrorDomain = @"org.kiazen.dojofinder.webservice.regioncontact";
+static const NSString* _Nonnull RegionContactWebServiceErrorDomain = @"org.kiazen.dojofinder.webservice.regioncontact";
 
 enum {
 	RegionContactWebServiceError
@@ -17,8 +17,8 @@ enum {
 
 
 @interface RegionContactWebService : NSObject
-+(WSRegionContact*)regionContactForRegion:(NSNumber*)region error:(NSError* _Nullable *)error;
-+(WSRegionContact*)regionContactByKey:(NSNumber*)key error:(NSError* _Nullable *)error;
-+(UIImage*)pictureForRegionContactByKey:(NSNumber*)key error:(NSError* _Nullable *)error;
-+(UIImage*)pictureForRegionContact:(WSRegionContact*)region error:(NSError* _Nullable *)error;
++(WSRegionContact* _Nullable)regionContactForRegion:(NSNumber* _Nonnull)region error:(NSError* _Nullable * _Nullable)error;
++(WSRegionContact* _Nullable)regionContactByKey:(NSNumber* _Nonnull)key error:(NSError* _Nullable * _Nullable)error;
++(UIImage* _Nullable)pictureForRegionContactByKey:(NSNumber* _Nonnull)key error:(NSError* _Nullable * _Nullable)error;
++(UIImage* _Nullable)pictureForRegionContact:(WSRegionContact* _Nonnull)region error:(NSError* _Nullable * _Nullable)error;
 @end
