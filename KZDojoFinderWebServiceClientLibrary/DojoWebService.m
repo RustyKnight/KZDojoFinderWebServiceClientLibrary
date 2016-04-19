@@ -59,7 +59,7 @@
 				NSString *errorString = [json objectForKey:@"error"];
 				NSDictionary *userInfo = @{NSLocalizedDescriptionKey: errorString};
 				NSLog(@"Return with error of %@", errorString);
-				*error = [NSError errorWithDomain:DojoWebServiceErrorDomain code:DojoWebServiceWebServerError userInfo:userInfo];
+				*error = [NSError errorWithDomain:DojoWebServiceErrorDomain code:DojoWebServiceError userInfo:userInfo];
 			}
 		} else {
 			NSLog(@"Parser Error %@", [parseError localizedDescription]);
@@ -108,7 +108,7 @@
 																											}
 																										}
 																									errorFactory:^NSError *(NSDictionary *userInfo) {
-																										return [NSError errorWithDomain:DojoServiceErrorDomain code:DojoWebServiceWebServerError userInfo:userInfo];
+																										return [NSError errorWithDomain:DojoServiceErrorDomain code:DojoWebServiceError userInfo:userInfo];
 																									}
 																												 error:error];
 	

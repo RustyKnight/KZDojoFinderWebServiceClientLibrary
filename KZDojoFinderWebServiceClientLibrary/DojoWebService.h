@@ -12,7 +12,7 @@
 
 static const NSString *DojoWebServiceErrorDomain = @"org.kiazen.dojofinder.webservice.dojo";
 enum {
-	DojoWebServiceWebServerError
+	DojoWebServiceError
 };
 
 

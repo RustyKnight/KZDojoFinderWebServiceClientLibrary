@@ -13,7 +13,7 @@
 static const NSString *SessionServiceErrorDomain = @"org.kiazen.dojofinder.webservice.session";
 
 enum {
-	DojoSessionWebServiceWebServerError
+	DojoSessionWebServiceError
 };
 
 @interface SessionWebService : NSObject

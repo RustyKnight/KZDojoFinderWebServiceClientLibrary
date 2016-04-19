@@ -43,7 +43,7 @@
 																				}
 																			}
 																			 errorFactory:^NSError *(NSDictionary *userInfo) {
-																				return [NSError errorWithDomain:SessionServiceErrorDomain code:DojoSessionWebServiceWebServerError userInfo:userInfo];
+																				return [NSError errorWithDomain:SessionServiceErrorDomain code:DojoSessionWebServiceError userInfo:userInfo];
 																			}
 																							error:error];
 	

@@ -31,6 +31,10 @@
 		705DED2F1CC0BD33002D5081 /* WSSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 705DED2D1CC0BD32002D5081 /* WSSession.m */; };
 		70AAFD9A1CC1FC080013555B /* KZCoreLibrariesObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70AAFD991CC1FC080013555B /* KZCoreLibrariesObjC.framework */; };
 		70AAFD9B1CC1FC080013555B /* KZCoreLibrariesObjC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70AAFD991CC1FC080013555B /* KZCoreLibrariesObjC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		70AAFDA81CC604DD0013555B /* RegionContactWebService.h in Headers */ = {isa = PBXBuildFile; fileRef = 70AAFDA61CC604DD0013555B /* RegionContactWebService.h */; };
+		70AAFDA91CC604DD0013555B /* RegionContactWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 70AAFDA71CC604DD0013555B /* RegionContactWebService.m */; };
+		70AAFDAC1CC605DD0013555B /* WSRegionContact.h in Headers */ = {isa = PBXBuildFile; fileRef = 70AAFDAA1CC605DD0013555B /* WSRegionContact.h */; };
+		70AAFDAD1CC605DD0013555B /* WSRegionContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 70AAFDAB1CC605DD0013555B /* WSRegionContact.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -75,6 +79,10 @@
 		705DED2C1CC0BD32002D5081 /* WSSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSSession.h; sourceTree = "<group>"; };
 		705DED2D1CC0BD32002D5081 /* WSSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSSession.m; sourceTree = "<group>"; };
 		70AAFD991CC1FC080013555B /* KZCoreLibrariesObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KZCoreLibrariesObjC.framework; path = Carthage/Build/iOS/KZCoreLibrariesObjC.framework; sourceTree = "<group>"; };
+		70AAFDA61CC604DD0013555B /* RegionContactWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionContactWebService.h; sourceTree = "<group>"; };
+		70AAFDA71CC604DD0013555B /* RegionContactWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegionContactWebService.m; sourceTree = "<group>"; };
+		70AAFDAA1CC605DD0013555B /* WSRegionContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSRegionContact.h; sourceTree = "<group>"; };
+		70AAFDAB1CC605DD0013555B /* WSRegionContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSRegionContact.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +167,10 @@
 				705DED291CC0BC35002D5081 /* SessionWebService.m */,
 				705DED2C1CC0BD32002D5081 /* WSSession.h */,
 				705DED2D1CC0BD32002D5081 /* WSSession.m */,
+				70AAFDA61CC604DD0013555B /* RegionContactWebService.h */,
+				70AAFDA71CC604DD0013555B /* RegionContactWebService.m */,
+				70AAFDAA1CC605DD0013555B /* WSRegionContact.h */,
+				70AAFDAB1CC605DD0013555B /* WSRegionContact.m */,
 			);
 			path = KZDojoFinderWebServiceClientLibrary;
 			sourceTree = "<group>";
@@ -171,11 +183,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				705DED221CC06DC9002D5081 /* WSDojo.h in Headers */,
+				70AAFDAC1CC605DD0013555B /* WSRegionContact.h in Headers */,
 				7057C1D81CBDE6A3006F43D2 /* DojoWebService.h in Headers */,
 				705DED2A1CC0BC35002D5081 /* SessionWebService.h in Headers */,
 				705DED2E1CC0BD33002D5081 /* WSSession.h in Headers */,
 				7057C1CF1CBDE490006F43D2 /* KZDojoFinderWebServiceClientLibrary.h in Headers */,
 				705DED1C1CBF60C5002D5081 /* DojoFinderWebServiceUtilites.h in Headers */,
+				70AAFDA81CC604DD0013555B /* RegionContactWebService.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +305,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				705DED231CC06DC9002D5081 /* WSDojo.m in Sources */,
+				70AAFDAD1CC605DD0013555B /* WSRegionContact.m in Sources */,
+				70AAFDA91CC604DD0013555B /* RegionContactWebService.m in Sources */,
 				705DED2B1CC0BC35002D5081 /* SessionWebService.m in Sources */,
 				7057C1D91CBDE6A3006F43D2 /* DojoWebService.m in Sources */,
 				705DED2F1CC0BD33002D5081 /* WSSession.m in Sources */,
