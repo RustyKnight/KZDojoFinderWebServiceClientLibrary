@@ -7,11 +7,11 @@
 //
 
 #import "DojoWebService.h"
-#import "DojoWebServiceUtilites.h"
+#import "DojoFinderWebServiceUtilites.h"
 
 @implementation DojoWebService
 +(NSArray<WSDojo*>*)dojosWithin:(CLLocationCoordinate2D)regionFrom to:(CLLocationCoordinate2D)regionTo error:(NSError* _Nullable *)error{
-	NSDictionary *mainDictionary = [DojoWebServiceUtilites webServiceProperties];
+	NSDictionary *mainDictionary = [DojoFinderWebServiceUtilites webServiceProperties];
 	
 	NSString* serverAddress = [mainDictionary valueForKey:@"WebServerAddress"];
 	NSString* request = [mainDictionary valueForKey:@"DojosWithinRegionRequest"];
@@ -52,7 +52,7 @@
 				NSArray *responses = [json objectForKey:@"dojos"];
 				dojos = [[NSMutableArray alloc] init];
 				for (NSDictionary* obj in responses) {
-					[dojos addObject:[DojoWebServiceUtilites makeDojoFromResponse:obj]];
+					[dojos addObject:[DojoFinderWebServiceUtilites makeDojoFromResponse:obj]];
 				}
 			} else {
 				// Alert caller?
@@ -78,4 +78,41 @@
 +(NSString*)doubleToString:(double)value {
 	return [NSString stringWithFormat:@"%f", value];
 }
+
++(UIImage*)pictureForDojo:(WSDojo*)dojo error:(NSError* _Nullable *)error {
+	return [DojoWebService pictureForDojo:[dojo key] error:error];
+}
+
++(UIImage*)pictureForDojoByKey:(NSNumber*)dojoKey error:(NSError* _Nullable *)error {
+	
+	NSString* cmdKey = @"PictureForDojo";
+	NSMutableDictionary<NSString*, NSObject*> *parameters = [[NSMutableDictionary alloc] init];
+	[parameters setObject:dojoKey forKey:@"dojo"];
+
+	__block UIImage* imagePicture = nil;
+	[DojoFinderWebServiceUtilites executeWebServiceForCommandKey:cmdKey
+																								withParameters:parameters
+																										withParser:^(NSDictionary* json) {
+																											
+																											NSNumber* count = json[@"count"];
+																											NSLog(@"Expcted %@ pictures", count);
+																											
+																											NSDictionary* properties = [json objectForKey:@"picture"];
+																											if (properties) {
+																												NSLog(@"Load encoded image data");
+																												NSString* data = [properties objectForKey:@"picture"];
+																												NSLog(@"Decode image data");
+																												NSData *decodedData = [[NSData alloc] initWithBase64EncodedString:data options:0];
+																												NSLog(@"Make image");
+																												imagePicture = [[UIImage alloc] initWithData:decodedData];
+																											}
+																										}
+																									errorFactory:^NSError *(NSDictionary *userInfo) {
+																										return [NSError errorWithDomain:DojoServiceErrorDomain code:DojoWebServiceWebServerError userInfo:userInfo];
+																									}
+																												 error:error];
+	
+	return imagePicture;
+}
+
 @end

@@ -10,7 +10,7 @@
 #import "WSSession.h"
 #import "WSDojo.h"
 
-NSString *SessionServiceErrorDomain = @"org.kiazen.dojofinder.webservice.session";
+static const NSString *SessionServiceErrorDomain = @"org.kiazen.dojofinder.webservice.session";
 
 enum {
 	DojoSessionWebServiceWebServerError

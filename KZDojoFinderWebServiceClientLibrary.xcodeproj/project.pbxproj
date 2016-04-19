@@ -18,8 +18,8 @@
 		7057C1D81CBDE6A3006F43D2 /* DojoWebService.h in Headers */ = {isa = PBXBuildFile; fileRef = 7057C1D61CBDE6A3006F43D2 /* DojoWebService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7057C1D91CBDE6A3006F43D2 /* DojoWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7057C1D71CBDE6A3006F43D2 /* DojoWebService.m */; };
 		7057C1EA1CBDEB52006F43D2 /* DojoFinderWebService.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7057C1E91CBDEB52006F43D2 /* DojoFinderWebService.plist */; };
-		705DED1C1CBF60C5002D5081 /* DojoWebServiceUtilites.h in Headers */ = {isa = PBXBuildFile; fileRef = 705DED1A1CBF60C5002D5081 /* DojoWebServiceUtilites.h */; };
-		705DED1D1CBF60C5002D5081 /* DojoWebServiceUtilites.m in Sources */ = {isa = PBXBuildFile; fileRef = 705DED1B1CBF60C5002D5081 /* DojoWebServiceUtilites.m */; };
+		705DED1C1CBF60C5002D5081 /* DojoFinderWebServiceUtilites.h in Headers */ = {isa = PBXBuildFile; fileRef = 705DED1A1CBF60C5002D5081 /* DojoFinderWebServiceUtilites.h */; };
+		705DED1D1CBF60C5002D5081 /* DojoFinderWebServiceUtilites.m in Sources */ = {isa = PBXBuildFile; fileRef = 705DED1B1CBF60C5002D5081 /* DojoFinderWebServiceUtilites.m */; };
 		705DED1F1CBF6D00002D5081 /* KZDojoFinderLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705DED1E1CBF6D00002D5081 /* KZDojoFinderLibrary.framework */; };
 		705DED221CC06DC9002D5081 /* WSDojo.h in Headers */ = {isa = PBXBuildFile; fileRef = 705DED201CC06DC9002D5081 /* WSDojo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		705DED231CC06DC9002D5081 /* WSDojo.m in Sources */ = {isa = PBXBuildFile; fileRef = 705DED211CC06DC9002D5081 /* WSDojo.m */; };
@@ -65,8 +65,8 @@
 		7057C1D61CBDE6A3006F43D2 /* DojoWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DojoWebService.h; sourceTree = "<group>"; };
 		7057C1D71CBDE6A3006F43D2 /* DojoWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DojoWebService.m; sourceTree = "<group>"; };
 		7057C1E91CBDEB52006F43D2 /* DojoFinderWebService.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DojoFinderWebService.plist; sourceTree = "<group>"; };
-		705DED1A1CBF60C5002D5081 /* DojoWebServiceUtilites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DojoWebServiceUtilites.h; sourceTree = "<group>"; };
-		705DED1B1CBF60C5002D5081 /* DojoWebServiceUtilites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DojoWebServiceUtilites.m; sourceTree = "<group>"; };
+		705DED1A1CBF60C5002D5081 /* DojoFinderWebServiceUtilites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DojoFinderWebServiceUtilites.h; sourceTree = "<group>"; };
+		705DED1B1CBF60C5002D5081 /* DojoFinderWebServiceUtilites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DojoFinderWebServiceUtilites.m; sourceTree = "<group>"; };
 		705DED1E1CBF6D00002D5081 /* KZDojoFinderLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KZDojoFinderLibrary.framework; path = Carthage/Build/iOS/KZDojoFinderLibrary.framework; sourceTree = "<group>"; };
 		705DED201CC06DC9002D5081 /* WSDojo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSDojo.h; sourceTree = "<group>"; };
 		705DED211CC06DC9002D5081 /* WSDojo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSDojo.m; sourceTree = "<group>"; };
@@ -151,8 +151,8 @@
 				7057C1D61CBDE6A3006F43D2 /* DojoWebService.h */,
 				7057C1D71CBDE6A3006F43D2 /* DojoWebService.m */,
 				7057C1E91CBDEB52006F43D2 /* DojoFinderWebService.plist */,
-				705DED1A1CBF60C5002D5081 /* DojoWebServiceUtilites.h */,
-				705DED1B1CBF60C5002D5081 /* DojoWebServiceUtilites.m */,
+				705DED1A1CBF60C5002D5081 /* DojoFinderWebServiceUtilites.h */,
+				705DED1B1CBF60C5002D5081 /* DojoFinderWebServiceUtilites.m */,
 				705DED201CC06DC9002D5081 /* WSDojo.h */,
 				705DED211CC06DC9002D5081 /* WSDojo.m */,
 				705DED281CC0BC35002D5081 /* SessionWebService.h */,
@@ -175,7 +175,7 @@
 				705DED2A1CC0BC35002D5081 /* SessionWebService.h in Headers */,
 				705DED2E1CC0BD33002D5081 /* WSSession.h in Headers */,
 				7057C1CF1CBDE490006F43D2 /* KZDojoFinderWebServiceClientLibrary.h in Headers */,
-				705DED1C1CBF60C5002D5081 /* DojoWebServiceUtilites.h in Headers */,
+				705DED1C1CBF60C5002D5081 /* DojoFinderWebServiceUtilites.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,7 +294,7 @@
 				705DED2B1CC0BC35002D5081 /* SessionWebService.m in Sources */,
 				7057C1D91CBDE6A3006F43D2 /* DojoWebService.m in Sources */,
 				705DED2F1CC0BD33002D5081 /* WSSession.m in Sources */,
-				705DED1D1CBF60C5002D5081 /* DojoWebServiceUtilites.m in Sources */,
+				705DED1D1CBF60C5002D5081 /* DojoFinderWebServiceUtilites.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

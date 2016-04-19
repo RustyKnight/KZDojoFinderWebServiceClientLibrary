@@ -10,12 +10,14 @@
 #import <Foundation/Foundation.h>
 #import "WSDojo.h"
 
-NSString *DojoWebServiceErrorDomain = @"org.kiazen.dojofinder.webservice.dojo";
-
+static const NSString *DojoWebServiceErrorDomain = @"org.kiazen.dojofinder.webservice.dojo";
 enum {
 	DojoWebServiceWebServerError
 };
 
+
 @interface DojoWebService : NSObject
 +(NSArray<WSDojo*>*)dojosWithin:(CLLocationCoordinate2D)regionFrom to:(CLLocationCoordinate2D)regionTo error:(NSError* _Nullable *)error;
++(UIImage*)pictureForDojo:(WSDojo*)dojo error:(NSError* _Nullable *)error;
++(UIImage*)pictureForDojoByKey:(NSNumber*)dojoKey error:(NSError* _Nullable *)error;
 @end
