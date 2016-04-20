@@ -15,8 +15,12 @@
  This was done with blocks/closures, but was becoming unwildy
  */
 @protocol WebServiceDelegate <NSObject>
--(NSString* _Nonnull)webServiceCommandKey;
--(NSDictionary<NSString*, NSObject*>* _Nonnull)webServiceParameters;
--(NSError* _Nonnull)webServiceErrorFromUserInfo:(UserInfo* _Nonnull)userInfo;
--(void)webServiceCompletedWithData:(NSData* _Nonnull)data;
+@property (readonly, strong, nonatomic) NSString* _Nonnull webServiceCommandKey;
+@property (readonly, strong, nonatomic) NSDictionary<NSString*, NSObject*>* _Nonnull webServiceParameters;
+-(NSObject* _Nonnull)webServiceCompletedWithJson:(NSDictionary* _Nonnull)json;
+/**
+ If the web service returns a value of not "OK", this method is called in order
+ to generate the required NSError, which is then passed to webServiceFailedWithError
+ */
+-(NSError* _Nonnull)webServiceErrorFromUserInfo:(NSDictionary* _Nonnull)userInfo;
 @end

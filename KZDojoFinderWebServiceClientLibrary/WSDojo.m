@@ -47,7 +47,9 @@ static dispatch_queue_t backgroundQueue;
 	if (backgroundQueue == nil) {
 		backgroundQueue = dispatch_queue_create("org.kaizen.dojoFinder.photo", NULL);
 		dispatch_async(backgroundQueue, ^(void) {
-			[DojoWebService  pictureForDojo:self withConsumer:consumer];
+			
+			// WebServiveImageConsumer withImageConsumer...
+			[DojoWebService  pictureForDojoByKey:[self key] withConsumer:<#(id<WebServiceDelegate> _Nonnull)#>
 //			dispatch_async(dispatch_get_main_queue(), ^{
 //				[consumer loadImage:image];
 //			});
