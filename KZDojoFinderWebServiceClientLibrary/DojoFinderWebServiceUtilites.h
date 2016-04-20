@@ -9,19 +9,24 @@
 #import <Foundation/Foundation.h>
 #import "WSDojo.h"
 
-static const NSString *DojoServiceErrorDomain = @"dojo";
+static NSString* _Nonnull const DojoServiceErrorDomain = @"dojo";
 
-typedef void (^WebServiceParser)(NSDictionary*);
-typedef NSError* (^WebServiceErrorFactory)(NSDictionary*);
+typedef void (^WebServiceParser)(NSDictionary* _Nonnull);
+typedef NSError* _Nullable (^WebServiceErrorFactory)(NSDictionary* _Nonnull);
 
 @interface DojoFinderWebServiceUtilites : NSObject
-+(NSDictionary*)webServiceProperties;
-+(WSDojo*)makeDojoWithKey:(NSNumber*)key name:(NSString*)name address:(NSString*)address region:(int)region latitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude;
-+(WSDojo*)makeDojoFromResponse:(NSDictionary*)response;
-+(void)executeWebServiceForCommandKey:(NSString *)cmdKey
-											 withParameters:(NSDictionary<NSString*, NSObject*>*)parameters
-													 withParser:(WebServiceParser)parser
-												 errorFactory:(WebServiceErrorFactory)errorFactory
-																error:(NSError* _Nullable*)error;
-+(NSURLQueryItem*)makeQueryItemForKey:(NSString*)key andValue:(NSString*)value;
++(NSDictionary* _Nonnull)webServiceProperties;
++(WSDojo* _Nullable)makeDojoWithKey:(NSNumber*  _Nonnull)key
+															 name:(NSString*  _Nonnull)name
+														address:(NSString*  _Nonnull)address
+														 region:(int)region
+													 latitude:(CLLocationDegrees)latitude
+													longitude:(CLLocationDegrees)longitude;
++(WSDojo* _Nullable)makeDojoFromResponse:(NSDictionary* _Nonnull)response;
++(void)executeWebServiceForCommandKey:(NSString* _Nonnull)cmdKey
+											 withParameters:(NSDictionary<NSString*, NSObject*>* _Nonnull)parameters
+													 withParser:(WebServiceParser _Nonnull)parser
+												 errorFactory:(WebServiceErrorFactory _Nonnull)errorFactory
+																error:(NSError* _Nullable* _Nonnull)error;
++(NSURLQueryItem* _Nonnull)makeQueryItemForKey:(NSString* _Nonnull)key andValue:(NSString* _Nonnull)value;
 @end

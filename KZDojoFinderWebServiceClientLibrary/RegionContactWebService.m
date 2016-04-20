@@ -38,7 +38,7 @@
 																																												 phoneNumber:phoneNumber
 																																															 email:email
 																																														facebook:facebook
-																																															region:region];
+																																															region:region.intValue];
 																										}
 																									errorFactory:^NSError *(NSDictionary *userInfo) {
 																										return [NSError errorWithDomain:RegionContactWebServiceErrorDomain code:RegionContactWebServiceError userInfo:userInfo];

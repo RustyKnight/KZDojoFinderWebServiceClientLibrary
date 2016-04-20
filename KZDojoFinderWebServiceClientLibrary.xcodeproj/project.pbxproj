@@ -154,25 +154,41 @@
 		7057C1CD1CBDE490006F43D2 /* KZDojoFinderWebServiceClientLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				70AAFDC81CC71E890013555B /* WebServices */,
+				70AAFDC71CC71E740013555B /* Data */,
 				7057C1CE1CBDE490006F43D2 /* KZDojoFinderWebServiceClientLibrary.h */,
 				7057C1D01CBDE490006F43D2 /* Info.plist */,
-				7057C1D61CBDE6A3006F43D2 /* DojoWebService.h */,
-				7057C1D71CBDE6A3006F43D2 /* DojoWebService.m */,
 				7057C1E91CBDEB52006F43D2 /* DojoFinderWebService.plist */,
-				705DED1A1CBF60C5002D5081 /* DojoFinderWebServiceUtilites.h */,
-				705DED1B1CBF60C5002D5081 /* DojoFinderWebServiceUtilites.m */,
+			);
+			path = KZDojoFinderWebServiceClientLibrary;
+			sourceTree = "<group>";
+		};
+		70AAFDC71CC71E740013555B /* Data */ = {
+			isa = PBXGroup;
+			children = (
 				705DED201CC06DC9002D5081 /* WSDojo.h */,
 				705DED211CC06DC9002D5081 /* WSDojo.m */,
-				705DED281CC0BC35002D5081 /* SessionWebService.h */,
-				705DED291CC0BC35002D5081 /* SessionWebService.m */,
 				705DED2C1CC0BD32002D5081 /* WSSession.h */,
 				705DED2D1CC0BD32002D5081 /* WSSession.m */,
-				70AAFDA61CC604DD0013555B /* RegionContactWebService.h */,
-				70AAFDA71CC604DD0013555B /* RegionContactWebService.m */,
 				70AAFDAA1CC605DD0013555B /* WSRegionContact.h */,
 				70AAFDAB1CC605DD0013555B /* WSRegionContact.m */,
 			);
-			path = KZDojoFinderWebServiceClientLibrary;
+			name = Data;
+			sourceTree = "<group>";
+		};
+		70AAFDC81CC71E890013555B /* WebServices */ = {
+			isa = PBXGroup;
+			children = (
+				7057C1D61CBDE6A3006F43D2 /* DojoWebService.h */,
+				7057C1D71CBDE6A3006F43D2 /* DojoWebService.m */,
+				705DED1A1CBF60C5002D5081 /* DojoFinderWebServiceUtilites.h */,
+				705DED1B1CBF60C5002D5081 /* DojoFinderWebServiceUtilites.m */,
+				705DED281CC0BC35002D5081 /* SessionWebService.h */,
+				705DED291CC0BC35002D5081 /* SessionWebService.m */,
+				70AAFDA61CC604DD0013555B /* RegionContactWebService.h */,
+				70AAFDA71CC604DD0013555B /* RegionContactWebService.m */,
+			);
+			name = WebServices;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

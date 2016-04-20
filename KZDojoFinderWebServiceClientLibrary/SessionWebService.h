@@ -10,13 +10,13 @@
 #import "WSSession.h"
 #import "WSDojo.h"
 
-static const NSString *SessionServiceErrorDomain = @"org.kiazen.dojofinder.webservice.session";
+static NSString* _Nonnull const SessionServiceErrorDomain = @"org.kiazen.dojofinder.webservice.session";
 
 enum {
 	DojoSessionWebServiceError
 };
 
 @interface SessionWebService : NSObject
-+(NSArray<WSSession*>*)sessionsForDojo:(WSDojo *)dojo error:(NSError* _Nullable *)error;
-+(NSArray<WSSession*>*)sessionsForDojoKey:(NSNumber*)dojoKey error:(NSError* _Nullable *)error;
++(NSArray<WSSession*>* _Nonnull)sessionsForDojo:(WSDojo* _Nonnull)dojo error:(NSError* _Nullable * _Nullable)error;
++(NSArray<WSSession*>* _Nonnull)sessionsForDojoKey:(NSNumber* _Nonnull)dojoKey error:(NSError* _Nullable * _Nullable)error;
 @end

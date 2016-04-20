@@ -9,7 +9,7 @@
 @import UIKit;
 #import "WSRegionContact.h"
 
-static const NSString* _Nonnull RegionContactWebServiceErrorDomain = @"org.kiazen.dojofinder.webservice.regioncontact";
+static NSString* _Nonnull const RegionContactWebServiceErrorDomain = @"org.kiazen.dojofinder.webservice.regioncontact";
 
 enum {
 	RegionContactWebServiceError

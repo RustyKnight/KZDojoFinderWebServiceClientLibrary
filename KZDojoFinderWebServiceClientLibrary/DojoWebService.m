@@ -47,7 +47,7 @@
 		NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&parseError];
 		if (!parseError) {
 			NSString *status = [json objectForKey:@"status"];
-			NSNumber *count = [json objectForKey:@"count"];
+//			NSNumber *count = [json objectForKey:@"count"];
 			if ([@"ok" isEqualToString:status]) {
 				NSArray *responses = [json objectForKey:@"dojos"];
 				dojos = [[NSMutableArray alloc] init];
@@ -79,11 +79,11 @@
 	return [NSString stringWithFormat:@"%f", value];
 }
 
-+(UIImage*)pictureForDojo:(WSDojo*)dojo error:(NSError* _Nullable *)error {
-	return [DojoWebService pictureForDojo:[dojo key] error:error];
++(UIImage*)pictureForDojo:(WSDojo* _Nonnull)dojo error:(NSError* _Nullable * _Nonnull)error {
+	return [DojoWebService pictureForDojoByKey:[dojo key] error:error];
 }
 
-+(UIImage*)pictureForDojoByKey:(NSNumber*)dojoKey error:(NSError* _Nullable *)error {
++(UIImage*)pictureForDojoByKey:(NSNumber*  _Nonnull)dojoKey error:(NSError* _Nullable * _Nonnull)error {
 	
 	NSString* cmdKey = @"PictureForDojo";
 	NSMutableDictionary<NSString*, NSObject*> *parameters = [[NSMutableDictionary alloc] init];

@@ -31,7 +31,6 @@
 																				NSArray* sessionResponses = json[@"sessions"];
 																				for (NSDictionary* response in sessionResponses) {
 																					NSNumber* key = response[@"key"];
-																					NSNumber* dojokey = response[@"dojokey"];
 																					NSNumber* dayofweek = response[@"dayofweek"];
 																					NSString* details = response[@"details"];
 																					NSNumber* endtime = response[@"endtime"];

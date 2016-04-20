@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <KZDojoFinderLibrary/KZDojoFinderLibrary.h>
 
-@interface WSRegionContact : NSObject<RegionalContact>
+@interface WSRegionContact : NSObject<RegionContact>
 -(id)initWithKey:(NSNumber*)key name:(NSString*)name phoneNumber:(NSString*)phoneNumber email:(NSString*)email facebook:(NSString*)facebook region:(int)region;
 @property (readonly, strong, nonatomic) NSNumber* key;
 @end

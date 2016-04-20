@@ -82,7 +82,7 @@
 	}
 	urlComponents.queryItems = queryItems;
 	
-	NSMutableArray* results;
+//	NSMutableArray* results;
 	NSURL *url = urlComponents.URL;
 	NSLog(@"%@", url);
 	NSData *data = [NSData dataWithContentsOfURL:url options:NSDataReadingUncached error:error];

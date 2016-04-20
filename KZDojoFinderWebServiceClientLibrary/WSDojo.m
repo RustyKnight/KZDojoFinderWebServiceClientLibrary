@@ -10,25 +10,31 @@
 #import "WSDojo.h"
 
 @implementation WSDojo {
-	NSString *_name;
-	NSString *_address;
-	int _region;
-	CLLocation* _location;
+//	NSString *_name;
+//	NSString *_address;
+////	int _region;
+//	CLLocation* _location;
 }
 
--(id)initWithKey:(NSNumber*)key name:(NSString*)name address:(NSString*)address region:(int)region latitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude {
+@synthesize region;
+@synthesize name;
+@synthesize address;
+@synthesize location;
+
+-(id)initWithKey:(NSNumber*)key name:(NSString*)aName address:(NSString*)aAddress region:(int)aRegion latitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude {
 	if (self = [super init]) {
 		_key = key;
-		_name = name;
-		_address = address;
-		_region = region;
-		_location = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
+		name = aName;
+		address = aAddress;
+		region = aRegion;
+		location = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
 	}
 	return self;
 }
 
 -(NSString*)description {
 	NSMutableString* value = [[NSMutableString alloc] init];
+	[value appendFormat:@"Dojo: "];
 	[value appendFormat:@"key = %@", self.key];
 	[value appendFormat:@"; name = %@", self.name];
 	[value appendFormat:@"; address = %@", self.address];
@@ -38,21 +44,21 @@
 	return value;
 }
 
--(NSString*)name {
-	return _name;
-}
-
--(NSString *)address {
-	return _address;
-}
-
--(CLLocation *)location {
-	return _location;
-}
-
--(int)region {
-	return _region;
-}
+//-(NSString*)name {
+//	return _name;
+//}
+//
+//-(NSString *)address {
+//	return _address;
+//}
+//
+//-(CLLocation *)location {
+//	return _location;
+//}
+//
+//-(int)region {
+//	return _region;
+//}
 
 -(void)picture:(void (^)(UIImage *))callBack {
 }
