@@ -11,6 +11,49 @@
 
 @implementation RegionContactWebService
 
++(WSRegionContact* _Nullable)regionContactForRegion:(NSNumber* _Nonnull)region error:(NSError* _Nullable * _Nullable)error {
+	
+	NSString* cmdKey = @"ContactForRegion";
+	NSMutableDictionary<NSString*, NSObject*> *parameters = [[NSMutableDictionary alloc] init];
+	[parameters setObject:region forKey:@"region"];
+	
+	__block WSRegionContact* contact = nil;
+	[DojoFinderWebServiceUtilites executeWebServiceForCommandKey:cmdKey
+																								withParameters:parameters
+																										withParser:^(NSDictionary* json) {
+																											
+																											NSNumber* count = json[@"count"];
+																											NSLog(@"Expcted %@ contacts", count);
+																											
+																											NSDictionary* response = json[@"contact"];
+																											NSNumber* key = response[@"key"];
+																											NSString* name = response[@"name"];
+																											NSString* phoneNumber = response[@"phone"];
+																											NSString* email = response[@"email"];
+																											NSString* facebook = response[@"facebook"];
+																											NSNumber* region = response[@"region"];
+																											
+																											contact = [[WSRegionContact alloc] initWithKey:key
+																																																name:name
+																																												 phoneNumber:phoneNumber
+																																															 email:email
+																																														facebook:facebook
+																																															region:region];
+																										}
+																									errorFactory:^NSError *(NSDictionary *userInfo) {
+																										return [NSError errorWithDomain:RegionContactWebServiceErrorDomain code:RegionContactWebServiceError userInfo:userInfo];
+																									}
+																												 error:error];
+	
+	return contact;
+	
+}
+
++(WSRegionContact* _Nullable)regionContactForDojo:(id<Dojo> _Nonnull)dojo error:(NSError* _Nullable * _Nullable)error {
+	return [RegionContactWebService regionContactForRegion:[NSNumber numberWithInt:[dojo region]] error:error];
+}
+
+
 +(UIImage*)pictureForRegionContact:(WSRegionContact*)region error:(NSError* _Nullable *)error {
 	return [RegionContactWebService pictureForRegionContactByKey:[region key] error:error];
 }
@@ -45,14 +88,6 @@
 																												 error:error];
 	
 	return imagePicture;
-}
-
-+(WSRegionContact*)regionContactForRegion:(NSNumber*)region error:(NSError* _Nullable *)error {
-	return nil;
-}
-
-+(WSRegionContact*)regionContactByKey:(NSNumber*)key error:(NSError* _Nullable *)error {
-	return nil;
 }
 
 @end

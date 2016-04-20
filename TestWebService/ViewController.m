@@ -41,14 +41,21 @@
 //	}
 	
 //	UIImage* image = [DojoWebService pictureForDojoByKey:[NSNumber numberWithInt:383] error:&error];
-	UIImage* image = [RegionContactWebService pictureForRegionContactByKey:[NSNumber numberWithInt:1] error:&error];
+//	UIImage* image = [RegionContactWebService pictureForRegionContactByKey:[NSNumber numberWithInt:1] error:&error];
+//	if (!error) {
+//		if (image) {
+//			NSLog(@"Image was loaded");
+//			self.imageView.image = image;
+//		} else {
+//			NSLog(@"Image was not loaded");
+//		}
+//	} else {
+//		NSLog(@" error => %@ ", [error localizedDescription] );
+//	}
+	
+	WSRegionContact* contact = [RegionContactWebService regionContactForRegion:[NSNumber numberWithInt:7] error:&error];
 	if (!error) {
-		if (image) {
-			NSLog(@"Image was loaded");
-			self.imageView.image = image;
-		} else {
-			NSLog(@"Image was not loaded");
-		}
+		NSLog(@"%@", contact);
 	} else {
 		NSLog(@" error => %@ ", [error localizedDescription] );
 	}

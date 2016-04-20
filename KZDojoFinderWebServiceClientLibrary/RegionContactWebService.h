@@ -18,7 +18,7 @@ enum {
 
 @interface RegionContactWebService : NSObject
 +(WSRegionContact* _Nullable)regionContactForRegion:(NSNumber* _Nonnull)region error:(NSError* _Nullable * _Nullable)error;
-+(WSRegionContact* _Nullable)regionContactByKey:(NSNumber* _Nonnull)key error:(NSError* _Nullable * _Nullable)error;
++(WSRegionContact* _Nullable)regionContactForDojo:(id<Dojo> _Nonnull)key error:(NSError* _Nullable * _Nullable)error;
 +(UIImage* _Nullable)pictureForRegionContactByKey:(NSNumber* _Nonnull)key error:(NSError* _Nullable * _Nullable)error;
 +(UIImage* _Nullable)pictureForRegionContact:(WSRegionContact* _Nonnull)region error:(NSError* _Nullable * _Nullable)error;
 @end
