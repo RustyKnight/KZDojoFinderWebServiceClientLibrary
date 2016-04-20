@@ -79,11 +79,11 @@
 	return [NSString stringWithFormat:@"%f", value];
 }
 
-+(UIImage*)pictureForDojo:(WSDojo* _Nonnull)dojo error:(NSError* _Nullable * _Nonnull)error {
-	return [DojoWebService pictureForDojoByKey:[dojo key] error:error];
++(UIImage*)pictureForDojo:(WSDojo* _Nonnull)dojo withConsumer:(id<ImageConsumer> _Nonnull)consumer; {
+	return [DojoWebService pictureForDojoByKey:[dojo key] withConsumer:consumer];
 }
 
-+(UIImage*)pictureForDojoByKey:(NSNumber*  _Nonnull)dojoKey error:(NSError* _Nullable * _Nonnull)error {
++(UIImage*)pictureForDojoByKey:(NSNumber*  _Nonnull)dojoKey withConsumer:(id<ImageConsumer> _Nonnull)consumer; {
 	
 	NSString* cmdKey = @"PictureForDojo";
 	NSMutableDictionary<NSString*, NSObject*> *parameters = [[NSMutableDictionary alloc] init];

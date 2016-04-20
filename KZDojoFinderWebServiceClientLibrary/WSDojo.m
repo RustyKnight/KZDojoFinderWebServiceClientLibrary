@@ -8,13 +8,12 @@
 
 @import MapKit;
 #import "WSDojo.h"
+#import "DojoWebService.h"
 
 @implementation WSDojo {
-//	NSString *_name;
-//	NSString *_address;
-////	int _region;
-//	CLLocation* _location;
 }
+
+static dispatch_queue_t backgroundQueue;
 
 @synthesize region;
 @synthesize name;
@@ -44,23 +43,17 @@
 	return value;
 }
 
-//-(NSString*)name {
-//	return _name;
-//}
-//
-//-(NSString *)address {
-//	return _address;
-//}
-//
-//-(CLLocation *)location {
-//	return _location;
-//}
-//
-//-(int)region {
-//	return _region;
-//}
-
--(void)picture:(void (^)(UIImage *))callBack {
+-(void)photoWithConsumer:(id<ImageConsumer>)consumer {
+	if (backgroundQueue == nil) {
+		backgroundQueue = dispatch_queue_create("org.kaizen.dojoFinder.photo", NULL);
+		dispatch_async(backgroundQueue, ^(void) {
+			[DojoWebService  pictureForDojo:self withConsumer:consumer];
+//			dispatch_async(dispatch_get_main_queue(), ^{
+//				[consumer loadImage:image];
+//			});
+			
+		});
+	}
 }
 
 //-(void)picture:(void (^)(UIImage *))callBack {

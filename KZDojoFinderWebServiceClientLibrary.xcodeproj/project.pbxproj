@@ -35,6 +35,7 @@
 		70AAFDA91CC604DD0013555B /* RegionContactWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 70AAFDA71CC604DD0013555B /* RegionContactWebService.m */; };
 		70AAFDAC1CC605DD0013555B /* WSRegionContact.h in Headers */ = {isa = PBXBuildFile; fileRef = 70AAFDAA1CC605DD0013555B /* WSRegionContact.h */; };
 		70AAFDAD1CC605DD0013555B /* WSRegionContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 70AAFDAB1CC605DD0013555B /* WSRegionContact.m */; };
+		70AAFDDA1CC7461B0013555B /* WebServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 70AAFDD91CC7461B0013555B /* WebServiceDelegate.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,6 +84,7 @@
 		70AAFDA71CC604DD0013555B /* RegionContactWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegionContactWebService.m; sourceTree = "<group>"; };
 		70AAFDAA1CC605DD0013555B /* WSRegionContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSRegionContact.h; sourceTree = "<group>"; };
 		70AAFDAB1CC605DD0013555B /* WSRegionContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSRegionContact.m; sourceTree = "<group>"; };
+		70AAFDD91CC7461B0013555B /* WebServiceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 				705DED291CC0BC35002D5081 /* SessionWebService.m */,
 				70AAFDA61CC604DD0013555B /* RegionContactWebService.h */,
 				70AAFDA71CC604DD0013555B /* RegionContactWebService.m */,
+				70AAFDD91CC7461B0013555B /* WebServiceDelegate.h */,
 			);
 			name = WebServices;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				705DED2E1CC0BD33002D5081 /* WSSession.h in Headers */,
 				7057C1CF1CBDE490006F43D2 /* KZDojoFinderWebServiceClientLibrary.h in Headers */,
 				705DED1C1CBF60C5002D5081 /* DojoFinderWebServiceUtilites.h in Headers */,
+				70AAFDDA1CC7461B0013555B /* WebServiceDelegate.h in Headers */,
 				70AAFDA81CC604DD0013555B /* RegionContactWebService.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,52 +7,33 @@
 //
 
 #import "WSRegionContact.h"
+#import "RegionContactWebService.h"
 
 @implementation WSRegionContact {
-	NSString *_name;
-	NSString *_phoneNumber;
-	NSString *_email;
-	NSString *_faceBook;
-	int _region;
 }
-//@property NSString *name;
-//@property NSString *phoneNumber;
-//@property NSString *email;
-//@property NSString *faceBook;
-//@property int region;
-//
-//-(void) photo:(void (^)(UIImage*))callBack;
 
--(id)initWithKey:(NSNumber*)key name:(NSString*)name phoneNumber:(NSString*)phoneNumber email:(NSString*)email facebook:(NSString*)facebook region:(int)region {
+@synthesize key;
+@synthesize name;
+@synthesize phoneNumber;
+@synthesize faceBook;
+@synthesize email;
+@synthesize region;
+
+-(id)initWithKey:(NSNumber*)aKey
+						name:(NSString*)aName
+		 phoneNumber:(NSString*)aPhoneNumber
+					 email:(NSString*)aEmail
+				facebook:(NSString*)aFacebook
+					region:(int)aRegion {
 	if (self = [super init]) {
-		_key = key;
-		_name = name;
-		_phoneNumber = phoneNumber;
-		_email = email;
-		_faceBook = facebook;
-		_region = region;
+		key = aKey;
+		name = aName;
+		phoneNumber = aPhoneNumber;
+		email = aEmail;
+		faceBook = aFacebook;
+		region = aRegion;
 	}
 	return self;
-}
-
--(NSString *)name {
-	return _name;
-}
-
--(NSString *)phoneNumber {
-	return _phoneNumber;
-}
-
--(NSString *)email {
-	return _email;
-}
-
--(NSString *)faceBook {
-	return _faceBook;
-}
-
--(int)region {
-	return _region;
 }
 
 -(NSString*)description {
@@ -68,38 +49,46 @@
 	return value;
 }
 
-
--(void)photo:(void (^)(UIImage*))callBack {
-
-//	PFFile *file = self.parseObject[@"photo"];
-//	if (file != nil) {
-//
-//		if (backgroundQueue == nil) {
-//
-//			backgroundQueue = dispatch_queue_create("org.kaizen.dojoFinder.photo", NULL);
-//
-//		}
-//
-//		dispatch_async(backgroundQueue, ^(void) {
-//
-//			NSLog(@"Start loading photo");
-//			NSData *data = [file getData];
-//			UIImage *picture = [UIImage imageWithData:data];
-//			NSLog(@"Completed loading photo");
-//
-//			dispatch_async(dispatch_get_main_queue(), ^{
-//				callBack(picture);
-//			});
-//
-//		});
-//
-//	} else {
-//
-//		callBack(nil);
-//
-//	}
-
+-(void)photoWithConsumer:(id<ImageConsumer>)consumer {
+	
 }
+
+//
+//
+//-(void)photo:(void (^)(UIImage*))callBack {
+//	
+//	NSError *error = nil;
+//	[RegionContactWebService pictureForRegionContact:self error:&error];
+//
+////	PFFile *file = self.parseObject[@"photo"];
+////	if (file != nil) {
+////
+////		if (backgroundQueue == nil) {
+////
+////			backgroundQueue = dispatch_queue_create("org.kaizen.dojoFinder.photo", NULL);
+////
+////		}
+////
+////		dispatch_async(backgroundQueue, ^(void) {
+////
+////			NSLog(@"Start loading photo");
+////			NSData *data = [file getData];
+////			UIImage *picture = [UIImage imageWithData:data];
+////			NSLog(@"Completed loading photo");
+////
+////			dispatch_async(dispatch_get_main_queue(), ^{
+////				callBack(picture);
+////			});
+////
+////		});
+////
+////	} else {
+////
+////		callBack(nil);
+////
+////	}
+//
+//}
 
 
 @end
