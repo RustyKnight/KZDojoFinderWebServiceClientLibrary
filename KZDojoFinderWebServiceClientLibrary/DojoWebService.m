@@ -113,6 +113,7 @@ static WebServiceErrorFactory dojoWebServiceErrorFactory = ^NSError * _Nonnull (
 	 andErrorHandler:dojoWebServiceErrorFactory];
 	
 	[DojoFinderWebServiceUtilites executeWebServiceWithDelegate:delegate andConsumer:consumer];
+	
 }
 
 +(void)dojosWithin:(CLLocationCoordinate2D)regionFrom

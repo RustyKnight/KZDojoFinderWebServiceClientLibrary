@@ -27,5 +27,5 @@ enum {
 			 withConsume:(id<WebServiceConsumer> _Nonnull)consumer;
 
 +(void)pictureForDojo:(WSDojo* _Nonnull)dojo withConsumer:(id<WebServiceConsumer> _Nonnull)consumer;
-+(void)pictureForDojoByKey:(NSNumber*  _Nonnull)dojoKey withConsumer:(id<WebServiceConsumer> _Nonnull)delegate;
++(void)pictureForDojoByKey:(NSNumber*  _Nonnull)dojoKey withConsumer:(id<WebServiceConsumer> _Nonnull)consumer;
 @end
