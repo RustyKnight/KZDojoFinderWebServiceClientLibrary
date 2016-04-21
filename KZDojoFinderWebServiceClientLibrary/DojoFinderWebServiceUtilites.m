@@ -118,4 +118,21 @@
 	[service execute];
 }
 
++(UIImage* _Nullable)decodeImageFromJsonResponse:(NSDictionary* _Nonnull)json withKey:(NSString* _Nonnull)key {
+	
+	NSDictionary* properties = [json objectForKey:@"picture"];
+	UIImage* imagePicture = nil;
+	if (properties) {
+		NSLog(@"Load encoded image data");
+		NSString* data = [properties objectForKey:@"picture"];
+		NSLog(@"Decode image data");
+		NSData *decodedData = [[NSData alloc] initWithBase64EncodedString:data options:0];
+		NSLog(@"Make image");
+		imagePicture = [[UIImage alloc] initWithData:decodedData];
+	}
+	
+	return imagePicture;
+
+}
+
 @end

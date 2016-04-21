@@ -34,4 +34,10 @@ typedef NSError* _Nullable (^WebServiceErrorFactory)(NSDictionary* _Nonnull);
 +(NSURLQueryItem* _Nonnull)makeQueryItemForKey:(NSString* _Nonnull)key andValue:(NSString* _Nonnull)value;
 
 +(void)executeWebServiceWithDelegate:(id<WebServiceDelegate> _Nonnull)delegate andConsumer:(id<WebServiceConsumer> _Nonnull) consumer;
+
+/**
+ This decodes a base64 encoded image from a json response
+ */
++(UIImage* _Nullable)decodeImageFromJsonResponse:(NSDictionary* _Nonnull)json withKey:(NSString* _Nonnull)key;
+
 @end
