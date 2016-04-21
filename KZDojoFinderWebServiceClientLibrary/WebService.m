@@ -59,8 +59,8 @@
 	for (NSString* key in [self.delegate webServiceParameters]) {
 		NSObject* value = [parameters objectForKey:key];
 		[queryItems addObject:
-		 [DojoFinderWebServiceUtilites makeQueryItemForKey:key
-																							andValue:[NSString stringWithFormat:@"%@", value]]];
+		 [WebService makeQueryItemForKey:key
+														andValue:[NSString stringWithFormat:@"%@", value]]];
 	}
 	urlComponents.queryItems = queryItems;
 	
@@ -75,38 +75,6 @@
 													 delegateQueue:[NSOperationQueue mainQueue]];
 	NSURLSessionDownloadTask* task = [session downloadTaskWithURL:url];
 	[task resume];
-//	NSURLSessionDataTask* task = [session
-//																dataTaskWithURL:url
-//																completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//		NSLog(@"Session completed with data");
-//		if (!error) {
-//			NSError* parseError;
-//			NSLog(@"Parse Json");
-//			NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&parseError];
-//			if (!parseError) {
-//				NSString *status = [json objectForKey:@"status"];
-//				if ([@"ok" isEqualToString:status]) {
-//					NSLog(@"Process Result");
-//					NSObject* results = [self.delegate webServiceCompletedWithJson:json];
-//					NSLog(@"Complete request");
-//					[self.consumer webService:self didCompleteWith:results];
-//				} else {
-//					NSLog(@"Request failed");
-//					NSString *errorString = [json objectForKey:@"error"];
-//					NSDictionary *userInfo = @{NSLocalizedDescriptionKey: errorString};
-//					NSLog(@"Return with error of %@", errorString);
-//					[self.consumer webService:self didFailWithError:[self.delegate webServiceErrorFromUserInfo:userInfo]];
-//				}
-//			} else {
-//				[self.consumer webService:self didFailWithError:parseError];
-//			}
-//		} else {
-//			NSLog(@"Service failed");
-//			[self.consumer webService:self didFailWithError:error];
-//		}
-//	}];
-//	[task resume];
-
 }
 
 -(void)downloadCompletedWithData:(NSData* _Nonnull)data {
@@ -153,6 +121,10 @@ expectedTotalBytes:(int64_t)expectedTotalBytes {
 -(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
 	NSData* data = [NSData dataWithContentsOfURL:location];
 	[self downloadCompletedWithData:data];
+}
+
++(NSURLQueryItem*)makeQueryItemForKey:(NSString*)key andValue:(NSString*)value {
+	return [[NSURLQueryItem alloc] initWithName:key value:value];
 }
 
 @end

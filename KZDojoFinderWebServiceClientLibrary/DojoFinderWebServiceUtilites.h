@@ -26,12 +26,12 @@ typedef NSError* _Nullable (^WebServiceErrorFactory)(NSDictionary* _Nonnull);
 													 latitude:(CLLocationDegrees)latitude
 													longitude:(CLLocationDegrees)longitude;
 +(WSDojo* _Nullable)makeDojoFromResponse:(NSDictionary* _Nonnull)response;
-+(void)executeWebServiceForCommandKey:(NSString* _Nonnull)cmdKey
-											 withParameters:(NSDictionary<NSString*, NSObject*>* _Nonnull)parameters
-													 withParser:(WebServiceParser _Nonnull)parser
-												 errorFactory:(WebServiceErrorFactory _Nonnull)errorFactory
-																error:(NSError* _Nullable* _Nonnull)error;
-+(NSURLQueryItem* _Nonnull)makeQueryItemForKey:(NSString* _Nonnull)key andValue:(NSString* _Nonnull)value;
+//+(void)executeWebServiceForCommandKey:(NSString* _Nonnull)cmdKey
+//											 withParameters:(NSDictionary<NSString*, NSObject*>* _Nonnull)parameters
+//													 withParser:(WebServiceParser _Nonnull)parser
+//												 errorFactory:(WebServiceErrorFactory _Nonnull)errorFactory
+//																error:(NSError* _Nullable* _Nonnull)error;
+//+(NSURLQueryItem* _Nonnull)makeQueryItemForKey:(NSString* _Nonnull)key andValue:(NSString* _Nonnull)value;
 
 +(void)executeWebServiceWithDelegate:(id<WebServiceDelegate> _Nonnull)delegate andConsumer:(id<WebServiceConsumer> _Nonnull) consumer;
 
