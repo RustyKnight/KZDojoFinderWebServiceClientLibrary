@@ -70,28 +70,36 @@
 	NSURLSessionDataTask* task = [session
 																dataTaskWithURL:url
 																completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+		NSLog(@"Session completed with data");
 		if (!error) {
 			NSError* parseError;
+			NSLog(@"Parse Json");
 			NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&parseError];
 			if (!parseError) {
-				[self.consumer webServiceFailedWithError:error];
-			} else {
 				NSString *status = [json objectForKey:@"status"];
 				if ([@"ok" isEqualToString:status]) {
+					NSLog(@"Process Result");
 					NSObject* results = [self.delegate webServiceCompletedWithJson:json];
-					[self.consumer webServiceCompleteWith:results];
+					NSLog(@"Complete request");
+					[self.consumer webServiceCompletedWith:results];
 				} else {
+					NSLog(@"Request failed");
 					NSString *errorString = [json objectForKey:@"error"];
 					NSDictionary *userInfo = @{NSLocalizedDescriptionKey: errorString};
 					NSLog(@"Return with error of %@", errorString);
 					[self.consumer webServiceFailedWithError:[self.delegate webServiceErrorFromUserInfo:userInfo]];
 				}
+			} else {
+				[self.consumer webServiceFailedWithError:error];
 			}
 		} else {
+			NSLog(@"Service failed");
 			[self.consumer webServiceFailedWithError:error];
 		}
 	}];
+	NSLog(@"Before Resume");
 	[task resume];
+	NSLog(@"After resumt");
 
 }
 

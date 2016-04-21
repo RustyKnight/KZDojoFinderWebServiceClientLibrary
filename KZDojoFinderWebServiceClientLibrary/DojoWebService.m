@@ -9,6 +9,7 @@
 #import "DojoWebService.h"
 #import "DojoFinderWebServiceUtilites.h"
 #import "WebService.h"
+#import "DefaultWebServiceDelegate.h"
 
 @implementation DojoWebService
 +(NSArray<WSDojo*>*)dojosWithin:(CLLocationCoordinate2D)regionFrom to:(CLLocationCoordinate2D)regionTo error:(NSError* _Nullable *)error{
@@ -122,7 +123,35 @@
 	NSMutableDictionary<NSString*, NSObject*> *parameters = [[NSMutableDictionary alloc] init];
 	[parameters setObject:dojoKey forKey:@"dojo"];
 	
-	WebService* webService = [WebService serviceWithDelegate: delegate andConsumer:consumer];
+	DefaultWebServiceDelegate* delegate =
+	[DefaultWebServiceDelegate
+	 serviceWithCommandKey:cmdKey
+	 andParameters:parameters
+	 andComplitationHandler:^NSObject * _Nullable (NSDictionary * _Nonnull json) {
+		 NSNumber* count = json[@"count"];
+		 NSLog(@"Expcted %@ pictures", count);
+		 
+		 NSDictionary* properties = [json objectForKey:@"picture"];
+		 UIImage* imagePicture = nil;
+		 if (properties) {
+			 NSLog(@"Load encoded image data");
+			 NSString* data = [properties objectForKey:@"picture"];
+			 NSLog(@"Decode image data");
+			 NSData *decodedData = [[NSData alloc] initWithBase64EncodedString:data options:0];
+			 NSLog(@"Make image");
+			 imagePicture = [[UIImage alloc] initWithData:decodedData];
+		 }
+		 
+		 return imagePicture;
+	 }
+	 andErrorHandler:^NSError * _Nonnull (NSDictionary * _Nonnull userInfo) {
+		 return [NSError errorWithDomain:DojoServiceErrorDomain code:DojoWebServiceError userInfo:userInfo];
+	 }];
+	
+	WebService* service = [WebService serviceWithDelegate:delegate andConsumer:consumer];
+	NSLog(@"Before execute");
+	[service execute];
+	NSLog(@"After execute");
 	
 	//	__block UIImage* imagePicture = nil;
 	//	[DojoFinderWebServiceUtilites executeWebServiceForCommandKey:cmdKey

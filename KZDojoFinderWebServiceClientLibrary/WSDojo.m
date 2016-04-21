@@ -9,6 +9,7 @@
 @import MapKit;
 #import "WSDojo.h"
 #import "DojoWebService.h"
+#import "WebServiceImageConsumer.h"
 
 @implementation WSDojo {
 }
@@ -46,15 +47,15 @@ static dispatch_queue_t backgroundQueue;
 -(void)photoWithConsumer:(id<ImageConsumer>)consumer {
 	if (backgroundQueue == nil) {
 		backgroundQueue = dispatch_queue_create("org.kaizen.dojoFinder.photo", NULL);
-		dispatch_async(backgroundQueue, ^(void) {
-			
-			// WebServiveImageConsumer withImageConsumer...
-			[DojoWebService  pictureForDojoByKey:[self key] withConsumer:<#(id<WebServiceDelegate> _Nonnull)#>
+//		dispatch_async(backgroundQueue, ^(void) {
+		
+			WebServiceImageConsumer* webServiceConsumer = [WebServiceImageConsumer withImageConsumer:consumer];
+			[DojoWebService  pictureForDojoByKey:[self key] withConsumer:webServiceConsumer];
 //			dispatch_async(dispatch_get_main_queue(), ^{
 //				[consumer loadImage:image];
 //			});
 			
-		});
+//		});
 	}
 }
 

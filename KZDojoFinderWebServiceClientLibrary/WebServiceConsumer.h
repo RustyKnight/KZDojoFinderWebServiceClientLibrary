@@ -11,5 +11,5 @@
 @protocol WebServiceConsumer <NSObject>
 -(void)webServiceFailedWithError:(NSError* _Nonnull)error;
 -(void)webServiceProgress:(float)progress;
--(void)webServiceCompleteWith:(NSObject* _Nonnull)data;
+-(void)webServiceCompletedWith:(NSObject* _Nonnull)data;
 @end

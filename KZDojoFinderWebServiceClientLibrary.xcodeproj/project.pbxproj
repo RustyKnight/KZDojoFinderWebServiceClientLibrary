@@ -14,9 +14,11 @@
 		703CF5DF1CBF05AF0068E9EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 703CF5DE1CBF05AF0068E9EF /* Assets.xcassets */; };
 		703CF5E21CBF05AF0068E9EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 703CF5E01CBF05AF0068E9EF /* LaunchScreen.storyboard */; };
 		703CF5E71CBF05BE0068E9EF /* KZDojoFinderWebServiceClientLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7057C1CB1CBDE48F006F43D2 /* KZDojoFinderWebServiceClientLibrary.framework */; };
-		704046511CC757C80033B59C /* WebServiceConsumer.h in Headers */ = {isa = PBXBuildFile; fileRef = 704046501CC757C80033B59C /* WebServiceConsumer.h */; };
+		704046511CC757C80033B59C /* WebServiceConsumer.h in Headers */ = {isa = PBXBuildFile; fileRef = 704046501CC757C80033B59C /* WebServiceConsumer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		704046591CC7AF6A0033B59C /* DefaultWebServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 704046571CC7AF6A0033B59C /* DefaultWebServiceDelegate.h */; };
 		7040465A1CC7AF6A0033B59C /* DefaultWebServiceDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 704046581CC7AF6A0033B59C /* DefaultWebServiceDelegate.m */; };
+		7040465D1CC85A950033B59C /* WebServiceImageConsumer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7040465B1CC85A950033B59C /* WebServiceImageConsumer.h */; };
+		7040465E1CC85A950033B59C /* WebServiceImageConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7040465C1CC85A950033B59C /* WebServiceImageConsumer.m */; };
 		7057C1CF1CBDE490006F43D2 /* KZDojoFinderWebServiceClientLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 7057C1CE1CBDE490006F43D2 /* KZDojoFinderWebServiceClientLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7057C1D81CBDE6A3006F43D2 /* DojoWebService.h in Headers */ = {isa = PBXBuildFile; fileRef = 7057C1D61CBDE6A3006F43D2 /* DojoWebService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7057C1D91CBDE6A3006F43D2 /* DojoWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7057C1D71CBDE6A3006F43D2 /* DojoWebService.m */; };
@@ -34,9 +36,9 @@
 		705DED2F1CC0BD33002D5081 /* WSSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 705DED2D1CC0BD32002D5081 /* WSSession.m */; };
 		70AAFD9A1CC1FC080013555B /* KZCoreLibrariesObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70AAFD991CC1FC080013555B /* KZCoreLibrariesObjC.framework */; };
 		70AAFD9B1CC1FC080013555B /* KZCoreLibrariesObjC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70AAFD991CC1FC080013555B /* KZCoreLibrariesObjC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		70AAFDA81CC604DD0013555B /* RegionContactWebService.h in Headers */ = {isa = PBXBuildFile; fileRef = 70AAFDA61CC604DD0013555B /* RegionContactWebService.h */; };
+		70AAFDA81CC604DD0013555B /* RegionContactWebService.h in Headers */ = {isa = PBXBuildFile; fileRef = 70AAFDA61CC604DD0013555B /* RegionContactWebService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		70AAFDA91CC604DD0013555B /* RegionContactWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 70AAFDA71CC604DD0013555B /* RegionContactWebService.m */; };
-		70AAFDAC1CC605DD0013555B /* WSRegionContact.h in Headers */ = {isa = PBXBuildFile; fileRef = 70AAFDAA1CC605DD0013555B /* WSRegionContact.h */; };
+		70AAFDAC1CC605DD0013555B /* WSRegionContact.h in Headers */ = {isa = PBXBuildFile; fileRef = 70AAFDAA1CC605DD0013555B /* WSRegionContact.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		70AAFDAD1CC605DD0013555B /* WSRegionContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 70AAFDAB1CC605DD0013555B /* WSRegionContact.m */; };
 		70AAFDDA1CC7461B0013555B /* WebServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 70AAFDD91CC7461B0013555B /* WebServiceDelegate.h */; };
 		70AAFDDF1CC7494D0013555B /* WebService.h in Headers */ = {isa = PBXBuildFile; fileRef = 70AAFDDD1CC7494D0013555B /* WebService.h */; };
@@ -72,6 +74,8 @@
 		704046501CC757C80033B59C /* WebServiceConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceConsumer.h; sourceTree = "<group>"; };
 		704046571CC7AF6A0033B59C /* DefaultWebServiceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultWebServiceDelegate.h; sourceTree = "<group>"; };
 		704046581CC7AF6A0033B59C /* DefaultWebServiceDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultWebServiceDelegate.m; sourceTree = "<group>"; };
+		7040465B1CC85A950033B59C /* WebServiceImageConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceImageConsumer.h; sourceTree = "<group>"; };
+		7040465C1CC85A950033B59C /* WebServiceImageConsumer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServiceImageConsumer.m; sourceTree = "<group>"; };
 		7057C1CB1CBDE48F006F43D2 /* KZDojoFinderWebServiceClientLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KZDojoFinderWebServiceClientLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7057C1CE1CBDE490006F43D2 /* KZDojoFinderWebServiceClientLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KZDojoFinderWebServiceClientLibrary.h; sourceTree = "<group>"; };
 		7057C1D01CBDE490006F43D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -191,20 +195,22 @@
 		70AAFDC81CC71E890013555B /* WebServices */ = {
 			isa = PBXGroup;
 			children = (
-				7057C1D61CBDE6A3006F43D2 /* DojoWebService.h */,
-				7057C1D71CBDE6A3006F43D2 /* DojoWebService.m */,
+				704046571CC7AF6A0033B59C /* DefaultWebServiceDelegate.h */,
+				704046581CC7AF6A0033B59C /* DefaultWebServiceDelegate.m */,
 				705DED1A1CBF60C5002D5081 /* DojoFinderWebServiceUtilites.h */,
 				705DED1B1CBF60C5002D5081 /* DojoFinderWebServiceUtilites.m */,
-				705DED281CC0BC35002D5081 /* SessionWebService.h */,
-				705DED291CC0BC35002D5081 /* SessionWebService.m */,
+				7057C1D61CBDE6A3006F43D2 /* DojoWebService.h */,
+				7057C1D71CBDE6A3006F43D2 /* DojoWebService.m */,
 				70AAFDA61CC604DD0013555B /* RegionContactWebService.h */,
 				70AAFDA71CC604DD0013555B /* RegionContactWebService.m */,
-				70AAFDD91CC7461B0013555B /* WebServiceDelegate.h */,
+				705DED281CC0BC35002D5081 /* SessionWebService.h */,
+				705DED291CC0BC35002D5081 /* SessionWebService.m */,
 				70AAFDDD1CC7494D0013555B /* WebService.h */,
 				70AAFDDE1CC7494D0013555B /* WebService.m */,
 				704046501CC757C80033B59C /* WebServiceConsumer.h */,
-				704046571CC7AF6A0033B59C /* DefaultWebServiceDelegate.h */,
-				704046581CC7AF6A0033B59C /* DefaultWebServiceDelegate.m */,
+				70AAFDD91CC7461B0013555B /* WebServiceDelegate.h */,
+				7040465B1CC85A950033B59C /* WebServiceImageConsumer.h */,
+				7040465C1CC85A950033B59C /* WebServiceImageConsumer.m */,
 			);
 			name = WebServices;
 			sourceTree = "<group>";
@@ -218,16 +224,17 @@
 			files = (
 				704046591CC7AF6A0033B59C /* DefaultWebServiceDelegate.h in Headers */,
 				705DED221CC06DC9002D5081 /* WSDojo.h in Headers */,
-				70AAFDAC1CC605DD0013555B /* WSRegionContact.h in Headers */,
 				7057C1D81CBDE6A3006F43D2 /* DojoWebService.h in Headers */,
+				704046511CC757C80033B59C /* WebServiceConsumer.h in Headers */,
+				70AAFDAC1CC605DD0013555B /* WSRegionContact.h in Headers */,
 				705DED2A1CC0BC35002D5081 /* SessionWebService.h in Headers */,
+				70AAFDA81CC604DD0013555B /* RegionContactWebService.h in Headers */,
 				705DED2E1CC0BD33002D5081 /* WSSession.h in Headers */,
 				7057C1CF1CBDE490006F43D2 /* KZDojoFinderWebServiceClientLibrary.h in Headers */,
-				704046511CC757C80033B59C /* WebServiceConsumer.h in Headers */,
 				705DED1C1CBF60C5002D5081 /* DojoFinderWebServiceUtilites.h in Headers */,
 				70AAFDDF1CC7494D0013555B /* WebService.h in Headers */,
+				7040465D1CC85A950033B59C /* WebServiceImageConsumer.h in Headers */,
 				70AAFDDA1CC7461B0013555B /* WebServiceDelegate.h in Headers */,
-				70AAFDA81CC604DD0013555B /* RegionContactWebService.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +351,7 @@
 			files = (
 				7040465A1CC7AF6A0033B59C /* DefaultWebServiceDelegate.m in Sources */,
 				705DED231CC06DC9002D5081 /* WSDojo.m in Sources */,
+				7040465E1CC85A950033B59C /* WebServiceImageConsumer.m in Sources */,
 				70AAFDAD1CC605DD0013555B /* WSRegionContact.m in Sources */,
 				70AAFDA91CC604DD0013555B /* RegionContactWebService.m in Sources */,
 				705DED2B1CC0BC35002D5081 /* SessionWebService.m in Sources */,

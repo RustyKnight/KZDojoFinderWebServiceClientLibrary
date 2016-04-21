@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "WebServiceDelegate.h"
 
-typedef NSObject* _Nonnull (^WebServiceCompletedWithJson)(NSDictionary* _Nonnull);
-typedef NSError* _Nullable (^WebServiceErrorFromUserInfo)(NSDictionary* _Nonnull);
+typedef NSObject* _Nullable (^WebServiceCompletedWithJson)(NSDictionary* _Nonnull);
+typedef NSError* _Nonnull (^WebServiceErrorFromUserInfo)(NSDictionary* _Nonnull);
 
 @interface DefaultWebServiceDelegate : NSObject <WebServiceDelegate>
 -(id _Nullable)initWithCommandKey:(NSString* _Nonnull)commandKey
