@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	NSError* error;
+//	NSError* error;
 	// Do any additional setup after loading the view, typically from a nib.
 //	CLLocationCoordinate2D from = CLLocationCoordinate2DMake(-38.099965, 145.071030);
 //	CLLocationCoordinate2D to = CLLocationCoordinate2DMake(-38.186699, 145.180854);
@@ -48,7 +48,7 @@
 //	}
 	
 	WebServiceImageConsumer* webServiceConsumer = [WebServiceImageConsumer withImageConsumer:self];
-	[DojoWebService  pictureForDojoByKey:[NSNumber numberWithInt:383] withConsumer:webServiceConsumer];
+	[DojoWebService pictureForDojoByKey:[NSNumber numberWithInt:383] withConsumer:webServiceConsumer];
 	
 //	UIImage* image = [DojoWebService pictureForDojoByKey:[NSNumber numberWithInt:383] error:&error];
 //	UIImage* image = [RegionContactWebService pictureForRegionContactByKey:[NSNumber numberWithInt:1] error:&error];
@@ -76,17 +76,21 @@
 	// Dispose of any resources that can be recreated.
 }
 
--(void)imageWasLoaded:(UIImage *)image {
+-(void)imageDidLoad:(UIImage *)image {
 	NSLog(@"imageWasLoaded");
 	self.imageView.image = image;
 }
 
--(void)imageFailedWithError:(NSError *)error {
+-(void)imageDidFailWithError:(NSError *)error {
 	NSLog(@"Image failed = %@", error.localizedDescription);
 }
 
--(void)imageLoadingWithProgress:(NSNumber *)progress {
+-(void)imageProgressDidChange:(NSNumber *)progress {
 	NSLog(@"Image progress = %@", progress);
+}
+
+-(void)imageWillStartLoading {
+	
 }
 
 @end

@@ -18,11 +18,14 @@ enum {
 
 
 @interface DojoWebService : NSObject
-+(NSArray<WSDojo*>* _Nonnull)dojosWithin:(CLLocationCoordinate2D)regionFrom
-																			to:(CLLocationCoordinate2D)regionTo
-																	 error:(NSError* _Nullable *  _Nonnull)error;
-//+(UIImage* _Nullable)pictureForDojo:(WSDojo*  _Nonnull)dojo withConsumer:(id<ImageConsumer> _Nonnull)consumer;
-//+(UIImage* _Nullable)pictureForDojoByKey:(NSNumber* _Nonnull)dojoKey withConsumer:(id<ImageConsumer> _Nonnull)consumer;
+//+(NSArray<WSDojo*>* _Nonnull)dojosWithin:(CLLocationCoordinate2D)regionFrom
+//																			to:(CLLocationCoordinate2D)regionTo
+//																	 error:(NSError* _Nullable *  _Nonnull)error;
 
++(void)dojosWithin:(CLLocationCoordinate2D)regionFrom
+								to:(CLLocationCoordinate2D)regionTo
+			 withConsume:(id<WebServiceConsumer> _Nonnull)consumer;
+
++(void)pictureForDojo:(WSDojo* _Nonnull)dojo withConsumer:(id<WebServiceConsumer> _Nonnull)consumer;
 +(void)pictureForDojoByKey:(NSNumber*  _Nonnull)dojoKey withConsumer:(id<WebServiceConsumer> _Nonnull)delegate;
 @end

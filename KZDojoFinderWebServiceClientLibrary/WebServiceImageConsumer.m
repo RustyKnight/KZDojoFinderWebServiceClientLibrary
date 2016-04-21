@@ -24,23 +24,27 @@
 	return [[WebServiceImageConsumer alloc] initWithImageConsumer:consumer];
 }
 
--(void)webServiceProgress:(float)progress {
-	
+-(void)webService:(WebService*) webService progressDidChange:(NSNumber* _Nonnull)progress {
+	[_imageConsumer imageProgressDidChange:progress];
 }
 
--(void)webServiceCompletedWith:(NSObject *)data {
+-(void)webService:(WebService*) webService didCompleteWith:(NSObject* _Nonnull)data {
 	if (data) {
 		if ([data isKindOfClass:[UIImage class]]) {
 			UIImage* image = (UIImage*)data;
-			[_imageConsumer imageWasLoaded:image];
+			[_imageConsumer imageDidLoad:image];
 		}
 	} else {
-		[_imageConsumer imageWasLoaded:nil];
+		[_imageConsumer imageDidLoad:nil];
 	}
 }
 
--(void)webServiceFailedWithError:(NSError *)error {
-	[_imageConsumer imageFailedWithError:error];
+-(void)webService:(WebService* _Nonnull)webService didFailWithError:(NSError* _Nonnull)error {
+	[_imageConsumer imageDidFailWithError:error];
+}
+
+-(void)webServiceWillStart:(WebService* _Nonnull)webService {
+	[_imageConsumer imageWillStartLoading];
 }
 
 @end

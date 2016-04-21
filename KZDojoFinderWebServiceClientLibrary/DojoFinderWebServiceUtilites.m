@@ -113,4 +113,9 @@
 	return [[NSURLQueryItem alloc] initWithName:key value:value];
 }
 
++(void)executeWebServiceWithDelegate:(id<WebServiceDelegate> _Nonnull)delegate andConsumer:(id<WebServiceConsumer> _Nonnull) consumer {
+	WebService* service = [WebService serviceWithDelegate:delegate andConsumer:consumer];
+	[service execute];
+}
+
 @end

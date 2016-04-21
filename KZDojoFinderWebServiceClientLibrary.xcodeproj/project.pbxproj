@@ -40,8 +40,8 @@
 		70AAFDA91CC604DD0013555B /* RegionContactWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 70AAFDA71CC604DD0013555B /* RegionContactWebService.m */; };
 		70AAFDAC1CC605DD0013555B /* WSRegionContact.h in Headers */ = {isa = PBXBuildFile; fileRef = 70AAFDAA1CC605DD0013555B /* WSRegionContact.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		70AAFDAD1CC605DD0013555B /* WSRegionContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 70AAFDAB1CC605DD0013555B /* WSRegionContact.m */; };
-		70AAFDDA1CC7461B0013555B /* WebServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 70AAFDD91CC7461B0013555B /* WebServiceDelegate.h */; };
-		70AAFDDF1CC7494D0013555B /* WebService.h in Headers */ = {isa = PBXBuildFile; fileRef = 70AAFDDD1CC7494D0013555B /* WebService.h */; };
+		70AAFDDA1CC7461B0013555B /* WebServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 70AAFDD91CC7461B0013555B /* WebServiceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		70AAFDDF1CC7494D0013555B /* WebService.h in Headers */ = {isa = PBXBuildFile; fileRef = 70AAFDDD1CC7494D0013555B /* WebService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		70AAFDE01CC7494D0013555B /* WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 70AAFDDE1CC7494D0013555B /* WebService.m */; };
 /* End PBXBuildFile section */
 
@@ -230,11 +230,11 @@
 				705DED2A1CC0BC35002D5081 /* SessionWebService.h in Headers */,
 				70AAFDA81CC604DD0013555B /* RegionContactWebService.h in Headers */,
 				705DED2E1CC0BD33002D5081 /* WSSession.h in Headers */,
+				70AAFDDF1CC7494D0013555B /* WebService.h in Headers */,
+				70AAFDDA1CC7461B0013555B /* WebServiceDelegate.h in Headers */,
 				7057C1CF1CBDE490006F43D2 /* KZDojoFinderWebServiceClientLibrary.h in Headers */,
 				705DED1C1CBF60C5002D5081 /* DojoFinderWebServiceUtilites.h in Headers */,
-				70AAFDDF1CC7494D0013555B /* WebService.h in Headers */,
 				7040465D1CC85A950033B59C /* WebServiceImageConsumer.h in Headers */,
-				70AAFDDA1CC7461B0013555B /* WebServiceDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

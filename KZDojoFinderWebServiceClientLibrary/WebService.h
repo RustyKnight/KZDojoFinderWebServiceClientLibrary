@@ -7,9 +7,12 @@
 //
 
 #import "WebServiceDelegate.h"
-#import "WebServiceConsumer.h"
+//#import "WebServiceConsumer.h"
 
-@interface WebService : NSObject <NSURLSessionDataDelegate, NSURLSessionDelegate, NSURLSessionTaskDelegate>
+
+@protocol WebServiceConsumer;
+
+@interface WebService : NSObject
 
 +(id _Nullable)serviceWithDelegate:(id<WebServiceDelegate> _Nonnull)delegate andConsumer:(id<WebServiceConsumer> _Nonnull) consumer;
 -(id _Nullable)initWithDelegate:(id<WebServiceDelegate> _Nonnull) delegate andConsumer:(id<WebServiceConsumer> _Nonnull) consumer;

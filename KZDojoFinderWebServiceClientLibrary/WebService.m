@@ -8,8 +8,12 @@
 
 #import "WebService.h"
 #import "DojoFinderWebServiceUtilites.h"
+#import "WebServiceConsumer.h"
 
-@implementation WebService {
+@interface WebService () <NSURLSessionDownloadDelegate, NSURLSessionTaskDelegate, NSURLSessionDelegate>//<NSURLSessionDataDelegate, NSURLSessionDelegate, NSURLSessionTaskDelegate>
+@end
+
+@implementation WebService  {
 	id<WebServiceDelegate> _Nonnull _delegate;
 	id<WebServiceConsumer> _Nonnull _consumer;
 	float _downloadSize;
@@ -64,57 +68,91 @@
 	NSURL *url = urlComponents.URL;
 	NSLog(@"%@", url);
 	
+	[self.consumer webServiceWillStart:self];
 	NSURLSession* session = [NSURLSession
 													 sessionWithConfiguration:NSURLSessionConfiguration.defaultSessionConfiguration
-													 delegate:self delegateQueue:[NSOperationQueue mainQueue]];
-	NSURLSessionDataTask* task = [session
-																dataTaskWithURL:url
-																completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-		NSLog(@"Session completed with data");
-		if (!error) {
-			NSError* parseError;
-			NSLog(@"Parse Json");
-			NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&parseError];
-			if (!parseError) {
-				NSString *status = [json objectForKey:@"status"];
-				if ([@"ok" isEqualToString:status]) {
-					NSLog(@"Process Result");
-					NSObject* results = [self.delegate webServiceCompletedWithJson:json];
-					NSLog(@"Complete request");
-					[self.consumer webServiceCompletedWith:results];
-				} else {
-					NSLog(@"Request failed");
-					NSString *errorString = [json objectForKey:@"error"];
-					NSDictionary *userInfo = @{NSLocalizedDescriptionKey: errorString};
-					NSLog(@"Return with error of %@", errorString);
-					[self.consumer webServiceFailedWithError:[self.delegate webServiceErrorFromUserInfo:userInfo]];
-				}
-			} else {
-				[self.consumer webServiceFailedWithError:error];
-			}
-		} else {
-			NSLog(@"Service failed");
-			[self.consumer webServiceFailedWithError:error];
-		}
-	}];
-	NSLog(@"Before Resume");
+													 delegate:self
+													 delegateQueue:[NSOperationQueue mainQueue]];
+	NSURLSessionDownloadTask* task = [session downloadTaskWithURL:url];
 	[task resume];
-	NSLog(@"After resumt");
+//	NSURLSessionDataTask* task = [session
+//																dataTaskWithURL:url
+//																completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//		NSLog(@"Session completed with data");
+//		if (!error) {
+//			NSError* parseError;
+//			NSLog(@"Parse Json");
+//			NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&parseError];
+//			if (!parseError) {
+//				NSString *status = [json objectForKey:@"status"];
+//				if ([@"ok" isEqualToString:status]) {
+//					NSLog(@"Process Result");
+//					NSObject* results = [self.delegate webServiceCompletedWithJson:json];
+//					NSLog(@"Complete request");
+//					[self.consumer webService:self didCompleteWith:results];
+//				} else {
+//					NSLog(@"Request failed");
+//					NSString *errorString = [json objectForKey:@"error"];
+//					NSDictionary *userInfo = @{NSLocalizedDescriptionKey: errorString};
+//					NSLog(@"Return with error of %@", errorString);
+//					[self.consumer webService:self didFailWithError:[self.delegate webServiceErrorFromUserInfo:userInfo]];
+//				}
+//			} else {
+//				[self.consumer webService:self didFailWithError:parseError];
+//			}
+//		} else {
+//			NSLog(@"Service failed");
+//			[self.consumer webService:self didFailWithError:error];
+//		}
+//	}];
+//	[task resume];
 
 }
 
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler {
-	completionHandler(NSURLSessionResponseAllow);
-	
-	_bytesDownloaded = 0;
-	_downloadSize = [response expectedContentLength];
+-(void)downloadCompletedWithData:(NSData* _Nonnull)data {
+	NSError* parseError;
+	NSLog(@"Parse Json");
+	NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&parseError];
+	if (!parseError) {
+		NSString *status = [json objectForKey:@"status"];
+		if ([@"ok" isEqualToString:status]) {
+			NSLog(@"Process Result");
+			NSObject* results = [self.delegate webServiceCompletedWithJson:json];
+			NSLog(@"Complete request");
+			[self.consumer webService:self didCompleteWith:results];
+		} else {
+			NSLog(@"Request failed");
+			NSString *errorString = [json objectForKey:@"error"];
+			NSDictionary *userInfo = @{NSLocalizedDescriptionKey: errorString};
+			NSLog(@"Return with error of %@", errorString);
+			[self.consumer webService:self didFailWithError:[self.delegate webServiceErrorFromUserInfo:userInfo]];
+		}
+	} else {
+		[self.consumer webService:self didFailWithError:parseError];
+	}
 }
 
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
-//	progressBar.progress=[ _dataToDownload length ]/_downloadSize;
-	_bytesDownloaded += [data length];
-	float progress = _bytesDownloaded / _downloadSize;
-	[self.consumer webServiceProgress:progress];
+-(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
+	if (error) {
+		[self.consumer webService:self didFailWithError:error];
+	}
+}
+
+-(void)URLSession:(NSURLSession *)session
+		 downloadTask:(NSURLSessionDownloadTask *)downloadTask
+didResumeAtOffset:(int64_t)fileOffset
+expectedTotalBytes:(int64_t)expectedTotalBytes {
+	// Hmmm... not sure I really care here...
+}
+
+-(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
+	float progress = (float)totalBytesWritten / (float)totalBytesExpectedToWrite;
+	[self.consumer webService:self progressDidChange:[NSNumber numberWithFloat:progress]];
+}
+
+-(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
+	NSData* data = [NSData dataWithContentsOfURL:location];
+	[self downloadCompletedWithData:data];
 }
 
 @end

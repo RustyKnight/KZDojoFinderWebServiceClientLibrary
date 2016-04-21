@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "WSDojo.h"
+#import "WebService.h"
+#import "WebServiceDelegate.h"
+#import "WebServiceConsumer.h"
 
 static NSString* _Nonnull const DojoServiceErrorDomain = @"dojo";
 
@@ -29,4 +32,6 @@ typedef NSError* _Nullable (^WebServiceErrorFactory)(NSDictionary* _Nonnull);
 												 errorFactory:(WebServiceErrorFactory _Nonnull)errorFactory
 																error:(NSError* _Nullable* _Nonnull)error;
 +(NSURLQueryItem* _Nonnull)makeQueryItemForKey:(NSString* _Nonnull)key andValue:(NSString* _Nonnull)value;
+
++(void)executeWebServiceWithDelegate:(id<WebServiceDelegate> _Nonnull)delegate andConsumer:(id<WebServiceConsumer> _Nonnull) consumer;
 @end
