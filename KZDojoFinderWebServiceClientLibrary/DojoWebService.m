@@ -96,7 +96,7 @@ static WebServiceErrorFactory dojoWebServiceErrorFactory = ^NSError * _Nonnull (
 
 +(void)pictureForDojoByKey:(NSNumber*  _Nonnull)dojoKey withConsumer:(id<WebServiceConsumer> _Nonnull)consumer {
 	
-	NSString* cmdKey = @"PictureForDojo";
+	NSString* cmdKey = @"PictureForDojoRequest";
 	NSMutableDictionary<NSString*, NSObject*> *parameters = [[NSMutableDictionary alloc] init];
 	[parameters setObject:dojoKey forKey:@"dojo"];
 	

@@ -26,7 +26,7 @@ static WebServiceErrorFactory sessionWebServiceErrorFactory = ^NSError * _Nonnul
 
 +(void)sessionsForDojoByKey:(NSNumber *)key withConsumer:(id<WebServiceConsumer>)consumer {
 	
-	NSString* cmdKey = @"SessionsForDojo";
+	NSString* cmdKey = @"SessionsForDojoRequest";
 	NSMutableDictionary<NSString*, NSObject*> *parameters = [[NSMutableDictionary alloc] init];
 	[parameters setObject:key forKey:@"dojo"];
 	

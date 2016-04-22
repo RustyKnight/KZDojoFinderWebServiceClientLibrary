@@ -2,13 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>ContactForRegion</key>
+	<key>ContactForRegionRequest</key>
 	<string>/contactForRegion</string>
-	<key>PictureForRegionContact</key>
+	<key>PictureForRegionContactRequest</key>
 	<string>/regionContactPicture</string>
-	<key>PictureForDojo</key>
+	<key>PictureForDojoRequest</key>
 	<string>/dojoPicture</string>
-	<key>SessionsForDojo</key>
+	<key>SessionsForDojoRequest</key>
 	<string>/sessionsForDojo</string>
 	<key>WebServerScheme</key>
 	<string>http</string>

@@ -22,7 +22,7 @@ static WebServiceErrorFactory regionContactWebServiceErrorFactory = ^NSError * _
 
 +(void)pictureForRegionContactByKey:(NSNumber *)key withConsume:(id<WebServiceConsumer>)consumer {
 	
-	NSString* cmdKey = @"PictureForRegionContact";
+	NSString* cmdKey = @"PictureForRegionContactRequest";
 	NSMutableDictionary<NSString*, NSObject*> *parameters = [[NSMutableDictionary alloc] init];
 	[parameters setObject:key forKey:@"key"];
 	
@@ -56,7 +56,7 @@ static WebServiceErrorFactory regionContactWebServiceErrorFactory = ^NSError * _
 
 +(void)regionContactForRegion:(NSNumber *)region withConsume:(id<WebServiceConsumer>)consumer {
 
-	NSString* cmdKey = @"ContactForRegion";
+	NSString* cmdKey = @"ContactForRegionRequest";
 	NSMutableDictionary<NSString*, NSObject*> *parameters = [[NSMutableDictionary alloc] init];
 	[parameters setObject:region forKey:@"region"];
 	
