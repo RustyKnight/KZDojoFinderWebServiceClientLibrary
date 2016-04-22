@@ -43,8 +43,4 @@
 	[_imageConsumer imageDidFailWithError:error];
 }
 
--(void)webServiceWillStart:(WebService* _Nonnull)webService {
-	[_imageConsumer imageWillStartLoading];
-}
-
 @end

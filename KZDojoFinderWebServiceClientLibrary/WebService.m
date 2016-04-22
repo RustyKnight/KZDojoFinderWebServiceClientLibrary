@@ -68,7 +68,6 @@
 	NSURL *url = urlComponents.URL;
 	NSLog(@"%@", url);
 	
-	[self.consumer webServiceWillStart:self];
 	NSURLSession* session = [NSURLSession
 													 sessionWithConfiguration:NSURLSessionConfiguration.defaultSessionConfiguration
 													 delegate:self

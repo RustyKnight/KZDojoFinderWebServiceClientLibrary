@@ -80,14 +80,6 @@
 	NSLog(@"Image progress = %@", progress);
 }
 
--(void)imageWillStartLoading {
-	
-}
-
--(void)webServiceWillStart:(WebService *)webService {
-	NSLog(@"WebService will start");
-}
-
 -(void)webService:(WebService *)webService didCompleteWith:(NSObject *)data {
 	NSLog(@"WebService didCompleteWith = %@", data);
 }
