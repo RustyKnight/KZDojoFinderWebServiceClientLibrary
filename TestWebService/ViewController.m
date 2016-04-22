@@ -14,7 +14,7 @@
 #import <KZDojoFinderLibrary/KZDojoFinderLibrary.h>
 #import "WebServiceImageConsumer.h"
 
-@interface ViewController () <ImageConsumer>
+@interface ViewController () <ImageConsumer, WebServiceConsumer>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
@@ -25,8 +25,10 @@
 	[super viewDidLoad];
 //	NSError* error;
 	// Do any additional setup after loading the view, typically from a nib.
-//	CLLocationCoordinate2D from = CLLocationCoordinate2DMake(-38.099965, 145.071030);
-//	CLLocationCoordinate2D to = CLLocationCoordinate2DMake(-38.186699, 145.180854);
+	CLLocationCoordinate2D from = CLLocationCoordinate2DMake(-38.099965, 145.071030);
+	CLLocationCoordinate2D to = CLLocationCoordinate2DMake(-38.186699, 145.180854);
+	[DojoWebService dojosWithin:from to:to withConsumer:self];
+	[SessionWebService sessionsForDojoByKey:[NSNumber numberWithInt:383] withConsumer:self];
 //	NSArray<WSDojo*>* dojos = [DojoWebService dojosWithin:from to:to error:&error];
 //	NSLog(@"Got %d dojos", dojos.count);
 //	if (!error) {
@@ -47,21 +49,10 @@
 //		NSLog(@" error => %@ ", [error localizedDescription] );
 //	}
 	
-	WebServiceImageConsumer* webServiceConsumer = [WebServiceImageConsumer withImageConsumer:self];
-	[DojoWebService pictureForDojoByKey:[NSNumber numberWithInt:383] withConsumer:webServiceConsumer];
 	
-//	UIImage* image = [DojoWebService pictureForDojoByKey:[NSNumber numberWithInt:383] error:&error];
-//	UIImage* image = [RegionContactWebService pictureForRegionContactByKey:[NSNumber numberWithInt:1] error:&error];
-//	if (!error) {
-//		if (image) {
-//			NSLog(@"Image was loaded");
-//			self.imageView.image = image;
-//		} else {
-//			NSLog(@"Image was not loaded");
-//		}
-//	} else {
-//		NSLog(@" error => %@ ", [error localizedDescription] );
-//	}
+	
+//	WebServiceImageConsumer* webServiceConsumer = [WebServiceImageConsumer withImageConsumer:self];
+//	[DojoWebService pictureForDojoByKey:[NSNumber numberWithInt:383] withConsumer:webServiceConsumer];
 	
 //	WSRegionContact* contact = [RegionContactWebService regionContactForRegion:[NSNumber numberWithInt:7] error:&error];
 //	if (!error) {
@@ -91,6 +82,22 @@
 
 -(void)imageWillStartLoading {
 	
+}
+
+-(void)webServiceWillStart:(WebService *)webService {
+	NSLog(@"WebService will start");
+}
+
+-(void)webService:(WebService *)webService didCompleteWith:(NSObject *)data {
+	NSLog(@"WebService didCompleteWith = %@", data);
+}
+
+-(void)webService:(WebService *)webService didFailWithError:(NSError *)error {
+	NSLog(@"WebService failed = %@", error.localizedDescription);
+}
+
+-(void)webService:(WebService *)webService progressDidChange:(NSNumber *)progress {
+	NSLog(@"WebService progress = %@", progress);
 }
 
 @end

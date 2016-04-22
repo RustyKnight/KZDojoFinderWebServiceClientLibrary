@@ -77,26 +77,56 @@
 	[task resume];
 }
 
++(NSOperationQueue*)processingQueue {
+	static NSOperationQueue* processingQueue = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		processingQueue = [[NSOperationQueue alloc] init];
+	});
+	return processingQueue;
+}
+
 -(void)downloadCompletedWithData:(NSData* _Nonnull)data {
-	NSError* parseError;
-	NSLog(@"Parse Json");
-	NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&parseError];
-	if (!parseError) {
-		NSString *status = [json objectForKey:@"status"];
-		if ([@"ok" isEqualToString:status]) {
-			NSLog(@"Process Result");
-			NSObject* results = [self.delegate webServiceCompletedWithJson:json];
-			NSLog(@"Complete request");
-			[self.consumer webService:self didCompleteWith:results];
-		} else {
-			NSLog(@"Request failed");
-			NSString *errorString = [json objectForKey:@"error"];
-			NSDictionary *userInfo = @{NSLocalizedDescriptionKey: errorString};
-			NSLog(@"Return with error of %@", errorString);
-			[self.consumer webService:self didFailWithError:[self.delegate webServiceErrorFromUserInfo:userInfo]];
-		}
+	// Really don't want the processing to take place on the main thread
+	if ([NSThread isMainThread]) {
+		// I had been mucking around with dispatchq but thought this was simply
+		// a better solution for my general needs
+		// Yes, I did try using [NSOperationQueue mainQueue]],
+		// but becaues it has tasks on the queue from which this is getting executed
+		// it kind of back fired
+		[[WebService processingQueue] addOperationWithBlock:^{
+			[self downloadCompletedWithData:data];
+		}];
+		
 	} else {
-		[self.consumer webService:self didFailWithError:parseError];
+		// This is executed in the main thread...
+		// Not sure if that's an issue or not...
+		NSError* parseError;
+		NSLog(@"Parse Json");
+		NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&parseError];
+		if (!parseError) {
+			NSString *status = [json objectForKey:@"status"];
+			if ([@"ok" isEqualToString:status]) {
+				NSLog(@"Process Result");
+				NSObject* results = [self.delegate webServiceCompletedWithJson:json];
+				NSLog(@"Complete request");
+				dispatch_async(dispatch_get_main_queue(), ^{
+					[self.consumer webService:self didCompleteWith:results];
+				});
+			} else {
+				NSLog(@"Request failed");
+				NSString *errorString = [json objectForKey:@"error"];
+				NSDictionary *userInfo = @{NSLocalizedDescriptionKey: errorString};
+				NSLog(@"Return with error of %@", errorString);
+				dispatch_async(dispatch_get_main_queue(), ^{
+					[self.consumer webService:self didFailWithError:[self.delegate webServiceErrorFromUserInfo:userInfo]];
+				});
+			}
+		} else {
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[self.consumer webService:self didFailWithError:parseError];
+			});
+		}
 	}
 }
 

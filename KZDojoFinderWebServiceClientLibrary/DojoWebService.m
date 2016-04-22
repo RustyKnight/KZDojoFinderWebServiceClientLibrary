@@ -118,7 +118,7 @@ static WebServiceErrorFactory dojoWebServiceErrorFactory = ^NSError * _Nonnull (
 
 +(void)dojosWithin:(CLLocationCoordinate2D)regionFrom
 								to:(CLLocationCoordinate2D)regionTo
-			 withConsume:(id<WebServiceConsumer> _Nonnull)consumer {
+			 withConsumer:(id<WebServiceConsumer> _Nonnull)consumer {
 
 	NSString* cmdKey = @"DojosWithinRegionRequest";
 	NSMutableDictionary<NSString*, NSObject*> *parameters = [[NSMutableDictionary alloc] init];
