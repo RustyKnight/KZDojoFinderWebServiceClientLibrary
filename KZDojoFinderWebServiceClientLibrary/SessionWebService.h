@@ -23,6 +23,6 @@ enum {
 
 +(void)sessionForDojo:(WSDojo* _Nonnull)dojo
 				 withConsumer:(id<WebServiceConsumer> _Nonnull)consumer;
-+(void)sessionsForDojoByKey:(NSNumber* _Nonnull)key
++(void)sessionsForDojoByKey:(NSInteger)key
 				 withConsumer:(id<WebServiceConsumer> _Nonnull)consumer;
 @end

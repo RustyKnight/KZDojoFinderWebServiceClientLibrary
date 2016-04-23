@@ -19,7 +19,7 @@
 @synthesize email;
 @synthesize region;
 
--(id)initWithKey:(NSNumber*)aKey
+-(id)initWithKey:(NSInteger)aKey
 						name:(NSString*)aName
 		 phoneNumber:(NSString*)aPhoneNumber
 					 email:(NSString*)aEmail
@@ -38,7 +38,7 @@
 
 -(NSString*)description {
 	NSMutableString* value = [[NSMutableString alloc] init];
-	[value appendFormat:@"key = %@", self.key];
+	[value appendFormat:@"key = %d", self.key];
 	[value appendFormat:@"; name = %@", self.name];
 	[value appendFormat:@"; phoneNumber = %@", self.phoneNumber];
 	[value appendFormat:@"; email = %@", self.email];

@@ -10,7 +10,7 @@
 #import <KZCoreLibrariesObjC/KZCoreLibrariesObjC.h>
 
 @implementation WSSession {
-	NSNumber* _key;
+//	NSNumber* _key;
 //	id<Dojo> _dojo;
 //	DayOfWeek _dayOfWeek;
 //	NSString* _details;
@@ -19,6 +19,7 @@
 //	SessionType _sessionType;
 }
 
+@synthesize key;
 @synthesize dayOfWeek;
 @synthesize startTimeText;
 @synthesize endTimeText;
@@ -27,7 +28,7 @@
 @synthesize dojo;
 
 
--(id)initWithKey:(NSNumber*)key
+-(id)initWithKey:(NSInteger)akey
 						dojo:(id<Dojo>)aDojo
 			 dayOfWeek:(NSNumber*)aDayOfWeek
 				 details:(NSString*)aDetails
@@ -35,7 +36,7 @@
 				 endTime:(NSNumber*)aEndTime
 						type:(NSNumber*)aType {
 	if (self = [super init]) {
-		_key = key;
+		key = akey;
 		dojo = aDojo;
 		dayOfWeek = aDayOfWeek.intValue;
 		details = aDetails;
@@ -49,7 +50,7 @@
 -(NSString*)description {
 	NSMutableString* value = [[NSMutableString alloc] init];
 	[value appendFormat:@"Session: "];
-	[value appendFormat:@"key = %@", self.key];
+	[value appendFormat:@"key = %d", self.key];
 	[value appendFormat:@"; name = %@", [[self dojo] name]];
 	[value appendFormat:@"; DOW = %@", [DojoFinderLibraryUtilities toStringDayOfWeek:self.dayOfWeek]];
 	[value appendFormat:@"; details = %@", self.details];
@@ -58,10 +59,6 @@
 	[value appendFormat:@"; type = %@", [DojoFinderLibraryUtilities toStringSessionType:self.type]];
 	
 	return value;
-}
-
--(NSNumber*)key {
-	return _key;
 }
 
 -(NSString *)startTimeText {

@@ -28,7 +28,7 @@
 	CLLocationCoordinate2D from = CLLocationCoordinate2DMake(-38.099965, 145.071030);
 	CLLocationCoordinate2D to = CLLocationCoordinate2DMake(-38.186699, 145.180854);
 	[DojoWebService dojosWithin:from to:to withConsumer:self];
-	[SessionWebService sessionsForDojoByKey:[NSNumber numberWithInt:383] withConsumer:self];
+	[SessionWebService sessionsForDojoByKey:383 withConsumer:self];
 //	NSArray<WSDojo*>* dojos = [DojoWebService dojosWithin:from to:to error:&error];
 //	NSLog(@"Got %d dojos", dojos.count);
 //	if (!error) {

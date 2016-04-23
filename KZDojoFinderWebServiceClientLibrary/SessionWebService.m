@@ -24,11 +24,11 @@ static WebServiceErrorFactory sessionWebServiceErrorFactory = ^NSError * _Nonnul
 	[SessionWebService sessionsForDojoByKey:[dojo key] withConsumer:consumer];
 }
 
-+(void)sessionsForDojoByKey:(NSNumber *)key withConsumer:(id<WebServiceConsumer>)consumer {
++(void)sessionsForDojoByKey:(NSInteger)key withConsumer:(id<WebServiceConsumer>)consumer {
 	
 	NSString* cmdKey = @"SessionsForDojoRequest";
 	NSMutableDictionary<NSString*, NSObject*> *parameters = [[NSMutableDictionary alloc] init];
-	[parameters setObject:key forKey:@"dojo"];
+	[parameters setObject:[NSNumber numberWithInteger:key] forKey:@"dojo"];
 	
 	DefaultWebServiceDelegate* delegate =
 	[DefaultWebServiceDelegate
@@ -49,7 +49,7 @@ static WebServiceErrorFactory sessionWebServiceErrorFactory = ^NSError * _Nonnul
 			 NSNumber* starttime = response[@"starttime"];
 			 NSNumber* type = response[@"type"];
 			 
-			 WSSession* session = [[WSSession alloc] initWithKey:key dojo:dojo dayOfWeek:dayofweek details:details startTime:starttime endTime:endtime type:type];
+			 WSSession* session = [[WSSession alloc] initWithKey:[key integerValue] dojo:dojo dayOfWeek:dayofweek details:details startTime:starttime endTime:endtime type:type];
 			 [sessions addObject:session];
 		 }
 		 return sessions;

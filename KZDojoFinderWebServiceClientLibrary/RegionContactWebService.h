@@ -23,12 +23,12 @@ enum {
 //+(UIImage* _Nullable)pictureForRegionContactByKey:(NSNumber* _Nonnull)key error:(NSError* _Nullable * _Nullable)error;
 //+(UIImage* _Nullable)pictureForRegionContact:(WSRegionContact* _Nonnull)region error:(NSError* _Nullable * _Nullable)error;
 
-+(void)regionContactForRegion:(NSNumber* _Nonnull)region
++(void)regionContactForRegion:(NSInteger)region
 									withConsume:(id<WebServiceConsumer> _Nonnull)consumer;
 +(void)regionContactForDojo:(id<Dojo> _Nonnull)dojo
 									withConsume:(id<WebServiceConsumer> _Nonnull)consumer;
 
-+(void)pictureForRegionContactByKey:(NSNumber* _Nonnull)key
++(void)pictureForRegionContactByKey:(NSInteger)key
 												withConsume:(id<WebServiceConsumer> _Nonnull)consumer;
 +(void)pictureForRegionContact:(WSRegionContact* _Nonnull)contact
 												withConsume:(id<WebServiceConsumer> _Nonnull)consumer;

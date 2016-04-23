@@ -56,7 +56,7 @@
 }
 
 
-+(WSDojo*)makeDojoWithKey:(NSNumber*)key name:(NSString*)name address:(NSString*)address region:(int)region latitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude {
++(WSDojo*)makeDojoWithKey:(NSInteger)key name:(NSString*)name address:(NSString*)address region:(int)region latitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude {
 	WSDojo* dojo = [[WSDojo alloc] initWithKey:key name:name address:address region:region latitude:latitude longitude:longitude];
 	return dojo;
 }
@@ -68,7 +68,7 @@
 	NSNumber* region = response[@"region"];
 	NSNumber* latitude = response[@"latitude"];
 	NSNumber* longitude = response[@"longitude"];
-	return [DojoFinderWebServiceUtilites makeDojoWithKey:key name:name address:address region:region.intValue latitude:latitude.doubleValue longitude:longitude.doubleValue];
+	return [DojoFinderWebServiceUtilites makeDojoWithKey:[key integerValue] name:name address:address region:region.intValue latitude:latitude.doubleValue longitude:longitude.doubleValue];
 }
 
 +(void)executeWebServiceWithDelegate:(id<WebServiceDelegate> _Nonnull)delegate andConsumer:(id<WebServiceConsumer> _Nonnull) consumer {

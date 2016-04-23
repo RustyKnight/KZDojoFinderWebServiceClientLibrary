@@ -19,7 +19,7 @@ typedef NSError* _Nullable (^WebServiceErrorFactory)(NSDictionary* _Nonnull);
 
 @interface DojoFinderWebServiceUtilites : NSObject
 +(NSDictionary* _Nonnull)webServiceProperties;
-+(WSDojo* _Nullable)makeDojoWithKey:(NSNumber*  _Nonnull)key
++(WSDojo* _Nullable)makeDojoWithKey:(NSInteger)key
 															 name:(NSString*  _Nonnull)name
 														address:(NSString*  _Nonnull)address
 														 region:(int)region

@@ -20,11 +20,11 @@ static WebServiceErrorFactory regionContactWebServiceErrorFactory = ^NSError * _
 @implementation RegionContactWebService {
 }
 
-+(void)pictureForRegionContactByKey:(NSNumber *)key withConsume:(id<WebServiceConsumer>)consumer {
++(void)pictureForRegionContactByKey:(NSInteger)key withConsume:(id<WebServiceConsumer>)consumer {
 	
 	NSString* cmdKey = @"PictureForRegionContactRequest";
 	NSMutableDictionary<NSString*, NSObject*> *parameters = [[NSMutableDictionary alloc] init];
-	[parameters setObject:key forKey:@"key"];
+	[parameters setObject:[NSNumber numberWithInteger:key] forKey:@"key"];
 	
 	DefaultWebServiceDelegate* delegate =
 	[DefaultWebServiceDelegate
@@ -50,15 +50,15 @@ static WebServiceErrorFactory regionContactWebServiceErrorFactory = ^NSError * _
 }
 
 +(void)regionContactForDojo:(id<Dojo>)dojo withConsume:(id<WebServiceConsumer>)consumer {
-	[RegionContactWebService regionContactForRegion:[NSNumber numberWithInt:[dojo region]]
+	[RegionContactWebService regionContactForRegion:[dojo region]
 																			withConsume:consumer];
 }
 
-+(void)regionContactForRegion:(NSNumber *)region withConsume:(id<WebServiceConsumer>)consumer {
++(void)regionContactForRegion:(NSInteger)region withConsume:(id<WebServiceConsumer>)consumer {
 
 	NSString* cmdKey = @"ContactForRegionRequest";
 	NSMutableDictionary<NSString*, NSObject*> *parameters = [[NSMutableDictionary alloc] init];
-	[parameters setObject:region forKey:@"region"];
+	[parameters setObject:[NSNumber numberWithInteger:region] forKey:@"region"];
 	
 	DefaultWebServiceDelegate* delegate =
 	[DefaultWebServiceDelegate
@@ -77,7 +77,7 @@ static WebServiceErrorFactory regionContactWebServiceErrorFactory = ^NSError * _
 		 NSString* facebook = response[@"facebook"];
 		 NSNumber* region = response[@"region"];
 		 
-		 return [[WSRegionContact alloc] initWithKey:key
+		 return [[WSRegionContact alloc] initWithKey:[key integerValue]
 																							 name:name
 																				phoneNumber:phoneNumber
 																							email:email

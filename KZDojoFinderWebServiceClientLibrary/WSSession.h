@@ -10,12 +10,12 @@
 #import <KZDojoFinderLibrary/KZDojoFinderLibrary.h>
 
 @interface WSSession : NSObject<Session>
--(id)initWithKey:(NSNumber*)key
+-(id)initWithKey:(NSInteger)key
 						dojo:(id<Dojo>)dojo
 			 dayOfWeek:(NSNumber*)dayOfWeek
 				 details:(NSString*)details
 			 startTime:(NSNumber*)startTime
 				 endTime:(NSNumber*)endTime
 						type:(NSNumber*)type;
-@property (readonly, strong, nonatomic) NSNumber* key;
+@property NSInteger key;
 @end

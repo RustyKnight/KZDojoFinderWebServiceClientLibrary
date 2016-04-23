@@ -10,6 +10,6 @@
 #import <KZDojoFinderLibrary/KZDojoFinderLibrary.h>
 
 @interface WSDojo : NSObject<Dojo>
--(id)initWithKey:(NSNumber*)key name:(NSString*)name address:(NSString*)address region:(int)region latitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude;
-@property (readonly, strong, nonatomic) NSNumber* key;
+-(id)initWithKey:(NSInteger)key name:(NSString*)name address:(NSString*)address region:(int)region latitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude;
+@property NSInteger key;
 @end

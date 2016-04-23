@@ -21,7 +21,7 @@ static dispatch_queue_t backgroundQueue;
 @synthesize address;
 @synthesize location;
 
--(id)initWithKey:(NSNumber*)key name:(NSString*)aName address:(NSString*)aAddress region:(int)aRegion latitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude {
+-(id)initWithKey:(NSInteger)key name:(NSString*)aName address:(NSString*)aAddress region:(int)aRegion latitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude {
 	if (self = [super init]) {
 		_key = key;
 		name = aName;
@@ -35,7 +35,7 @@ static dispatch_queue_t backgroundQueue;
 -(NSString*)description {
 	NSMutableString* value = [[NSMutableString alloc] init];
 	[value appendFormat:@"Dojo: "];
-	[value appendFormat:@"key = %@", self.key];
+	[value appendFormat:@"key = %d", self.key];
 	[value appendFormat:@"; name = %@", self.name];
 	[value appendFormat:@"; address = %@", self.address];
 	[value appendFormat:@"; region = %d", self.region];
