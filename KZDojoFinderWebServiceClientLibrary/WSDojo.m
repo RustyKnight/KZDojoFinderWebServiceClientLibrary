@@ -35,7 +35,7 @@ static dispatch_queue_t backgroundQueue;
 -(NSString*)description {
 	NSMutableString* value = [[NSMutableString alloc] init];
 	[value appendFormat:@"Dojo: "];
-	[value appendFormat:@"key = %d", self.key];
+	[value appendFormat:@"key = %zd", self.key];
 	[value appendFormat:@"; name = %@", self.name];
 	[value appendFormat:@"; address = %@", self.address];
 	[value appendFormat:@"; region = %d", self.region];

@@ -50,7 +50,7 @@
 -(NSString*)description {
 	NSMutableString* value = [[NSMutableString alloc] init];
 	[value appendFormat:@"Session: "];
-	[value appendFormat:@"key = %d", self.key];
+	[value appendFormat:@"key = %zd", self.key];
 	[value appendFormat:@"; name = %@", [[self dojo] name]];
 	[value appendFormat:@"; DOW = %@", [DojoFinderLibraryUtilities toStringDayOfWeek:self.dayOfWeek]];
 	[value appendFormat:@"; details = %@", self.details];

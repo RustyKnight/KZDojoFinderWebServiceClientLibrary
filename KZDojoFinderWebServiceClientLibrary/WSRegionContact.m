@@ -38,7 +38,7 @@
 
 -(NSString*)description {
 	NSMutableString* value = [[NSMutableString alloc] init];
-	[value appendFormat:@"key = %d", self.key];
+	[value appendFormat:@"key = %zd", self.key];
 	[value appendFormat:@"; name = %@", self.name];
 	[value appendFormat:@"; phoneNumber = %@", self.phoneNumber];
 	[value appendFormat:@"; email = %@", self.email];
