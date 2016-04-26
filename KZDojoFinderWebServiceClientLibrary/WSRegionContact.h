@@ -11,5 +11,11 @@
 
 @interface WSRegionContact : NSObject<RegionContact>
 -(id)initWithKey:(NSInteger)key name:(NSString*)name phoneNumber:(NSString*)phoneNumber email:(NSString*)email facebook:(NSString*)facebook region:(int)region;
+
+- (BOOL)isEqual:(id)other;
+
+- (BOOL)isEqualToContact:(WSRegionContact *)contact;
+
+- (NSUInteger)hash;
 @property NSInteger key;
 @end

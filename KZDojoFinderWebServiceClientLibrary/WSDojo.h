@@ -11,5 +11,11 @@
 
 @interface WSDojo : NSObject<Dojo>
 -(id)initWithKey:(NSInteger)key name:(NSString*)name address:(NSString*)address region:(int)region latitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude;
+
+- (BOOL)isEqual:(id)other;
+
+- (BOOL)isEqualToDojo:(WSDojo *)dojo;
+
+- (NSUInteger)hash;
 @property NSInteger key;
 @end

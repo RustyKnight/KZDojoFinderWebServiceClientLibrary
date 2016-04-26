@@ -81,4 +81,27 @@ static dispatch_queue_t backgroundQueue;
 //
 //	}
 
+- (BOOL)isEqual:(id)other {
+	if (other == self)
+		return YES;
+	if (!other || ![[other class] isEqual:[self class]])
+		return NO;
+
+	return [self isEqualToDojo:other];
+}
+
+- (BOOL)isEqualToDojo:(WSDojo *)dojo {
+	if (self == dojo)
+		return YES;
+	if (dojo == nil)
+		return NO;
+	if (self.key != dojo.key)
+		return NO;
+	return YES;
+}
+
+- (NSUInteger)hash {
+	return (NSUInteger) self.key;
+}
+
 @end

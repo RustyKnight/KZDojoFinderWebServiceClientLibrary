@@ -88,5 +88,27 @@
 //-(NSString *)details {
 //	return _details;
 //}
+- (BOOL)isEqual:(id)other {
+	if (other == self)
+		return YES;
+	if (!other || ![[other class] isEqual:[self class]])
+		return NO;
+
+	return [self isEqualToSession:other];
+}
+
+- (BOOL)isEqualToSession:(WSSession *)session {
+	if (self == session)
+		return YES;
+	if (session == nil)
+		return NO;
+	if (self.key != session.key)
+		return NO;
+	return YES;
+}
+
+- (NSUInteger)hash {
+	return (NSUInteger) self.key;
+}
 
 @end

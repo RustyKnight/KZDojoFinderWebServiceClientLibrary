@@ -90,5 +90,27 @@
 //
 //}
 
+- (BOOL)isEqual:(id)other {
+	if (other == self)
+		return YES;
+	if (!other || ![[other class] isEqual:[self class]])
+		return NO;
+
+	return [self isEqualToContact:other];
+}
+
+- (BOOL)isEqualToContact:(WSRegionContact *)contact {
+	if (self == contact)
+		return YES;
+	if (contact == nil)
+		return NO;
+	if (self.key != contact.key)
+		return NO;
+	return YES;
+}
+
+- (NSUInteger)hash {
+	return (NSUInteger) self.key;
+}
 
 @end

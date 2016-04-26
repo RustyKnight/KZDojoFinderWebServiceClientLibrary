@@ -17,5 +17,11 @@
 			 startTime:(NSNumber*)startTime
 				 endTime:(NSNumber*)endTime
 						type:(NSNumber*)type;
+
+- (BOOL)isEqual:(id)other;
+
+- (BOOL)isEqualToSession:(WSSession *)session;
+
+- (NSUInteger)hash;
 @property NSInteger key;
 @end
