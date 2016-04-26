@@ -41,7 +41,7 @@
 	[DojoFinderWebServiceUtilites ensureValue:@"http" forKey:@"WebServerScheme" isAvailableIn:mergedDictionary];
 	[DojoFinderWebServiceUtilites ensureValue:@"8181" forKey:@"WebServerPort" isAvailableIn:mergedDictionary];
 	
-	return mainDictionary;
+	return mergedDictionary;
 }
 
 +(void)ensureValue:(NSString*)value forKey:(NSString*) key isAvailableIn:(NSMutableDictionary*)dictionary {

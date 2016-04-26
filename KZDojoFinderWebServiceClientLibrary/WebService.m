@@ -48,6 +48,11 @@
 	NSString* serverScheme = [mainDictionary valueForKey:@"WebServerScheme"];
 	NSNumber* serverPort = [mainDictionary valueForKey:@"WebServerPort"];
 	
+	NSLog(@"WebServerAddress = %@", serverAddress);
+	NSLog(@"request = %@", request);
+	NSLog(@"serverScheme = %@", serverScheme);
+	NSLog(@"serverPort = %@", serverPort);
+	
 	NSURLComponents *urlComponents = [[NSURLComponents alloc] init];
 	urlComponents.scheme = serverScheme;
 	urlComponents.host = serverAddress;
